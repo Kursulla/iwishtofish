@@ -5,8 +5,8 @@ import com.eutechpro.iwishtofish.models.Response;
 import retrofit.http.Body;
 import retrofit.http.DELETE;
 import retrofit.http.Path;
-import retrofit.http.Retrofit.GET;
-import retrofit.http.Retrofit.POST;
+import retrofit.http.GET;
+import retrofit.http.POST;
 
 /**
  *
