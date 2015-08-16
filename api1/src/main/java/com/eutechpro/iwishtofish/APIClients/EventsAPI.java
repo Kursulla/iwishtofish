@@ -10,7 +10,9 @@ import com.eutechpro.iwishtofish.models.Events;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
+import retrofit.RestAdapter.LogLevel;
 import retrofit.RetrofitError;
+import retrofit.client.Response;
 import retrofit.http.Body;
 import retrofit.http.Path;
 
@@ -27,8 +29,8 @@ public class EventsAPI {
     public static void init() {
         singleton = new EventsAPI();
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(URLConstants.API_URL)
-                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(URLConstants.DEV_API_URL)
+                .setLogLevel(LogLevel.NONE)
                 .build();
         singleton.api = restAdapter.create(APIEvents.class);
     }
@@ -46,13 +48,13 @@ public class EventsAPI {
         /* Just forward callback, because no need for any data repacking. */
         api.allEventsInRegion(lat, lng, new Callback<Events>() {
             @Override
-            public void success(Events events, retrofit.client.Response response) {
-                callback.onSuccess(events, new APIResponseStatus());
+            public void success(Events events, Response response) {
+                callback.onSuccess(events, new APIResponseStatus(response.getStatus()));
             }
 
             @Override
             public void failure(RetrofitError error) {
-                callback.onError(new APIError());
+                callback.onError(new APIError(error.getResponse().getStatus(),error.getResponse().getReason()));
             }
         });
     }
@@ -63,7 +65,7 @@ public class EventsAPI {
         /* Just forward callback, because no need for any data repacking. */
         api.addNewEvent(event, new Callback<Event>() {
             @Override
-            public void success(Event event, retrofit.client.Response response) {
+            public void success(Event event, Response response) {
 
             }
 
@@ -80,7 +82,7 @@ public class EventsAPI {
         /* Just forward callback, because no need for any data repacking. */
         api.deleteEvent(eventId, new Callback() {
             @Override
-            public void success(Object o, retrofit.client.Response response) {
+            public void success(Object o, Response response) {
 
             }
 
