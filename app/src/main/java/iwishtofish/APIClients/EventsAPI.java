@@ -1,13 +1,12 @@
-package com.eutechpro.iwishtofish.APIClients;
+package iwishtofish.APIClients;
 
-import com.eutechpro.iwishtofish.URLConstants;
-import com.eutechpro.iwishtofish.api.APICallback;
-import com.eutechpro.iwishtofish.api.APIEvents;
-import com.eutechpro.iwishtofish.models.APIError;
-import com.eutechpro.iwishtofish.models.APIResponseStatus;
-import com.eutechpro.iwishtofish.models.Event;
-import com.eutechpro.iwishtofish.models.Events;
-
+import iwishtofish.URLConstants;
+import iwishtofish.api.APICallback;
+import iwishtofish.api.APIEvents;
+import iwishtofish.models.APIError;
+import iwishtofish.models.APIResponseStatus;
+import iwishtofish.models.Event;
+import iwishtofish.models.Events;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -20,6 +19,7 @@ import retrofit.http.Path;
 public class EventsAPI {
     private static EventsAPI singleton;
     private static APIEvents api;
+
     private EventsAPI() {
     }
 
@@ -30,7 +30,7 @@ public class EventsAPI {
                 .setEndpoint(URLConstants.API_URL)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
-        singleton.api = restAdapter.create(APIEvents.class);
+        api = restAdapter.create(APIEvents.class);
     }
 
     public static EventsAPI get() {

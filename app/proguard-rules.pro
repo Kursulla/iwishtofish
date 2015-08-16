@@ -15,3 +15,12 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keep class retrofit.** { *; }
+
+-keepclasseswithmembers class * {
+    @retrofit.http.* <methods>;
+}
+
+-keep interface ch.teleboy.rest.TeleboyRetrofitClient.** { *;}
+-dontwarn retrofit.**

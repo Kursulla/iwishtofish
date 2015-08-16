@@ -6,11 +6,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.eutechpro.iwishtofish.APIClients.EventsAPI;
-import com.eutechpro.iwishtofish.api.APICallback;
-import com.eutechpro.iwishtofish.models.APIError;
-import com.eutechpro.iwishtofish.models.APIResponseData;
-import com.eutechpro.iwishtofish.models.APIResponseStatus;
+import iwishtofish.APIClients.EventsAPI;
+import iwishtofish.api.APICallback;
+import iwishtofish.models.APIError;
+import iwishtofish.models.APIResponseData;
+import iwishtofish.models.APIResponseStatus;
+import iwishtofish.models.Event;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -21,7 +22,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         EventsAPI.init();
-        EventsAPI.get().allEventsInRegion("124124", "23452345", new APICallback() {
+//        EventsAPI.get().allEventsInRegion("124124", "23452345", new APICallback() {
+//            @Override
+//            public void beforeStart() {
+//                Log.d(TAG, "beforeStart");
+//            }
+//
+//            @Override
+//            public void onSuccess(APIResponseData responseData, APIResponseStatus responseStatus) {
+//                Log.d(TAG, "onSuccess");
+//            }
+//
+//            @Override
+//            public void onError(APIError apiError) {
+//                Log.d(TAG, "onError");
+//            }
+//        });
+
+        EventsAPI.get().addNewEvent(new Event(), new APICallback() {
             @Override
             public void beforeStart() {
                 Log.d(TAG, "beforeStart");
