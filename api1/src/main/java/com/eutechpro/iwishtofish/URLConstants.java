@@ -5,4 +5,5 @@ package com.eutechpro.iwishtofish;
  */
 public class URLConstants {
     public static final String API_URL = "http://www.iqishtofish.com/rest";
+    public static final String DEV_API_URL = "http://www.mocky.io/v2/";
 }
