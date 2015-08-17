@@ -6,7 +6,7 @@ import com.iwishtofish.api.models.APIResponseStatus;
 /**
  * Created by Kursulla on 16/08/15.
  */
-public interface APICallback<T> {
+public interface ServerResponseCallback<T> {
     void onSuccess(T responseData, APIResponseStatus responseStatus);
     void onError(APIError apiError);
 }

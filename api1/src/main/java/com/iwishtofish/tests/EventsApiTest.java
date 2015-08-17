@@ -1,7 +1,7 @@
 package com.iwishtofish.tests;
 
 import com.iwishtofish.api.APIClients.APIEventsClient;
-import com.iwishtofish.api.api_interfaces.APICallback;
+import com.iwishtofish.api.api_interfaces.ServerResponseCallback;
 import com.iwishtofish.api.models.APIError;
 import com.iwishtofish.api.models.APIResponseStatus;
 import com.iwishtofish.api.models.Event;
@@ -24,7 +24,7 @@ public class EventsApiTest extends TestCase {
 
     public void testGetAllEvents() throws Exception {
         events = null;
-        APIEventsClient.get().allEventsInRegion("124124", "23452345", new APICallback<Events>() {
+        APIEventsClient.get().allEventsInRegion("124124", "23452345", new ServerResponseCallback<Events>() {
             @Override
             public void onSuccess(Events ev, APIResponseStatus responseStatus) {
                 System.out.println("onSuccess");
@@ -49,7 +49,7 @@ public class EventsApiTest extends TestCase {
 
     public void testAddNewEvent() throws Exception {
         final Event mockEvent = new Event();
-        APIEventsClient.get().addNewEvent(mockEvent, new APICallback<Event>() {
+        APIEventsClient.get().addNewEvent(mockEvent, new ServerResponseCallback<Event>() {
             @Override
             public void onSuccess(Event ev, APIResponseStatus responseStatus) {
                 System.out.println("onSuccess");
@@ -73,7 +73,7 @@ public class EventsApiTest extends TestCase {
 
     public void testDeleteEvent() throws Exception {
         final Event event = new Event();
-        APIEventsClient.get().deleteEvent(event.getId(), new APICallback<Object>() {
+        APIEventsClient.get().deleteEvent(event.getId(), new ServerResponseCallback<Object>() {
             @Override
             public void onSuccess(Object responseData, APIResponseStatus responseStatus) {
                 System.out.println("onSuccess " + responseStatus.getHttpStatus());

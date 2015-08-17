@@ -1,7 +1,7 @@
 package com.iwishtofish.api.APIClients;
 
 import com.iwishtofish.api.URLConstants;
-import com.iwishtofish.api.api_interfaces.APICallback;
+import com.iwishtofish.api.api_interfaces.ServerResponseCallback;
 import com.iwishtofish.api.api_interfaces.APIEvents;
 import com.iwishtofish.api.models.APIError;
 import com.iwishtofish.api.models.APIResponseStatus;
@@ -45,7 +45,7 @@ public class APIEventsClient {
             return singleton;
     }
 
-    public void allEventsInRegion(@Path("lat") String lat, @Path("lng") String lng, final APICallback callback) {
+    public void allEventsInRegion(@Path("lat") String lat, @Path("lng") String lng, final ServerResponseCallback callback) {
         /* Just forward callback, because no need for any data repacking. */
         api.allEventsInRegion(lat, lng, new Callback<Events>() {
             @Override
@@ -61,7 +61,7 @@ public class APIEventsClient {
     }
 
 
-    public void addNewEvent(@Body Event event, final APICallback callback) {
+    public void addNewEvent(@Body Event event, final ServerResponseCallback callback) {
         /* Just forward callback, because no need for any data repacking. */
         api.addNewEvent(event, new Callback<Event>() {
             @Override
@@ -77,7 +77,7 @@ public class APIEventsClient {
     }
 
 
-    public void deleteEvent(@Path("event_id") long eventId, final APICallback callback) {
+    public void deleteEvent(@Path("event_id") long eventId, final ServerResponseCallback callback) {
         /* Just forward callback, because no need for any data repacking. */
         api.deleteEvent(eventId, new Callback<Event>() {
             @Override

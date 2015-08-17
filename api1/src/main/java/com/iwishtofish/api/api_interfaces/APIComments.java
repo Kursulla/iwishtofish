@@ -15,14 +15,14 @@ import retrofit.http.Path;
  */
 public interface APIComments {
     @POST("/comments")
-    void commentEvent(@Body Comment comment, APICallback callback);
+    void commentEvent(@Body Comment comment, ServerResponseCallback callback);
 
     @GET("/comments/{event_id}")
-    void getAllCommentsOfEvent(@Path("event_id") long eventId, APICallback callback);
+    void getAllCommentsOfEvent(@Path("event_id") long eventId, ServerResponseCallback callback);
 
     @PUT("/comments/{user_id}")
-    void updateComment(@Path("user_id") long userId, APICallback callback);
+    void updateComment(@Path("user_id") long userId, ServerResponseCallback callback);
 
     @DELETE("/comments/{comment_id}")
-    void deleteComment(@Path("comment_id") long comment_id, APICallback callback);
+    void deleteComment(@Path("comment_id") long comment_id, ServerResponseCallback callback);
 }

@@ -1,7 +1,7 @@
 package com.iwishtofish.tests;
 
 import com.iwishtofish.api.APIClients.APIEventsClient;
-import com.iwishtofish.api.api_interfaces.APICallback;
+import com.iwishtofish.api.api_interfaces.ServerResponseCallback;
 import com.iwishtofish.api.models.APIError;
 import com.iwishtofish.api.models.APIResponseStatus;
 
@@ -12,7 +12,7 @@ import com.iwishtofish.api.models.APIResponseStatus;
 public class TestAPI {
     public static void main(String[] args){
         APIEventsClient.init();
-        APIEventsClient.get().deleteEvent(123, new APICallback<Object>() {
+        APIEventsClient.get().deleteEvent(123, new ServerResponseCallback<Object>() {
             @Override
             public void beforeStart() {
                 System.out.println("beforeStart");
