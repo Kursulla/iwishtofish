@@ -7,4 +7,8 @@ public class Response extends APIResponseData {
     private long eventId;
     private long userId;
     private String timestamp;
+
+    public Response(long id) {
+        super(id);
+    }
 }

@@ -14,6 +14,11 @@ public class Event extends APIResponseData {
     private String when;
     private String timestamp;
 
+
+    public Event(long id) {
+        super(id);
+    }
+
     public String getTitle() {
         return title;
     }

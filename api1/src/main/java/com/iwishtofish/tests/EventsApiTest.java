@@ -38,7 +38,7 @@ public class EventsApiTest extends TestCase {
                 assertFalse(apiError.getErrorMessage(), true);
             }
         });
-        Thread.sleep(500);
+        Thread.sleep(1000);
         assertEquals("API call for AddNewEvent failed. Returned HTTP status is not 200 ", 200, statusCode);
         assertNotNull("API call for GetAllEvents failed. Returned Events object is null ", events);
         assertNotNull("API call for GetAllEvents failed. Returned Events.items is null ", events.getItems());
@@ -48,7 +48,7 @@ public class EventsApiTest extends TestCase {
     }
 
     public void testAddNewEvent() throws Exception {
-        final Event mockEvent = new Event();
+        final Event mockEvent = new Event(1);
         APIEventsClient.get().addNewEvent(mockEvent, new ServerResponseCallback<Event>() {
             @Override
             public void onSuccess(Event ev, APIResponseStatus responseStatus) {
@@ -63,7 +63,7 @@ public class EventsApiTest extends TestCase {
                 assertFalse(apiError.getErrorMessage(), true);
             }
         });
-        Thread.sleep(500);
+        Thread.sleep(1000);
         assertEquals("API call for AddNewEvent failed. Returned HTTP status is not 201 ", 201, statusCode);
         assertNotNull("API call for AddNewEvent failed. Returned Event object is null ", event);
         assertNotNull("API call for AddNewEvent failed. Returned Event.getId() is 0 ", event.getId());
@@ -72,8 +72,8 @@ public class EventsApiTest extends TestCase {
     }
 
     public void testDeleteEvent() throws Exception {
-        final Event event = new Event();
-        APIEventsClient.get().deleteEvent(event.getId(), new ServerResponseCallback<Object>() {
+        final Event event = new Event(1);
+        APIEventsClient.get().deleteEvent(event.getId(), new ServerResponseCallback() {
             @Override
             public void onSuccess(Object responseData, APIResponseStatus responseStatus) {
                 System.out.println("onSuccess " + responseStatus.getHttpStatus());
@@ -86,7 +86,7 @@ public class EventsApiTest extends TestCase {
                 assertFalse(apiError.getErrorMessage(), true);
             }
         });
-        Thread.sleep(500);
+        Thread.sleep(1000);
         assertEquals("API call for deleteEvent failed. Returned HTTP status is not 204 ", 204, statusCode);
         statusCode = 0;
     }

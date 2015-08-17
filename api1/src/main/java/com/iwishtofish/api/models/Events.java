@@ -10,6 +10,10 @@ public class Events extends APIResponseData {
     private int         limit;
     private List<Event> items;
 
+    public Events(long id) {
+        super(id);
+    }
+
     public int getOffset() {
         return offset;
     }

@@ -1,13 +1,12 @@
 package com.iwishtofish.api.APIClients;
 
 import com.iwishtofish.api.URLConstants;
-import com.iwishtofish.api.api_interfaces.ServerResponseCallback;
 import com.iwishtofish.api.api_interfaces.APIEvents;
+import com.iwishtofish.api.api_interfaces.ServerResponseCallback;
 import com.iwishtofish.api.models.APIError;
 import com.iwishtofish.api.models.APIResponseStatus;
 import com.iwishtofish.api.models.Event;
 import com.iwishtofish.api.models.Events;
-import com.iwishtofish.tests.ApiEventsMock;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -31,9 +30,9 @@ public class APIEventsClient {
     public static void init() {
         singleton = new APIEventsClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(URLConstants.API_URL)
-                .setLogLevel(LogLevel.NONE)
-                .setClient(new ApiEventsMock())
+                .setEndpoint(URLConstants.DEV_API_URL)
+                .setLogLevel(LogLevel.FULL)
+//                .setClient(new ApiEventsMock())//Use only for API tests
                 .build();
         api = restAdapter.create(APIEvents.class);
     }
@@ -79,10 +78,10 @@ public class APIEventsClient {
 
     public void deleteEvent(@Path("event_id") long eventId, final ServerResponseCallback callback) {
         /* Just forward callback, because no need for any data repacking. */
-        api.deleteEvent(eventId, new Callback<Event>() {
+        api.deleteEvent(eventId, new Callback<Void>(){
             @Override
-            public void success(Event e, Response response) {
-                callback.onSuccess(e, new APIResponseStatus(response.getStatus()));
+            public void success(Void aVoid, Response response) {
+                callback.onSuccess(null, new APIResponseStatus(response.getStatus()));
             }
 
             @Override

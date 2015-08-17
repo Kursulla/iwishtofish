@@ -8,4 +8,8 @@ public class Comment extends APIResponseData {
     private long eventId;
     private String text;
     private String timestamp;
+
+    public Comment(long id) {
+        super(id);
+    }
 }

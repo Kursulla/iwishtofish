@@ -6,6 +6,10 @@ package com.iwishtofish.api.models;
 public abstract class APIResponseData {
     private long id;
 
+    public APIResponseData(long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }

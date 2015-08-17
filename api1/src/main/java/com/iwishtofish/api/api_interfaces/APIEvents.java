@@ -16,12 +16,15 @@ import retrofit.http.Query;
  * Created by Kursulla on 02/08/15.
  */
 public interface APIEvents {
-    @GET("/events")
+//    @GET("/events")
+    @GET("/55d2435f5733d7f81521e973")
     void allEventsInRegion(@Query("lat") String lat, @Query("lng") String lng, Callback<Events> callback);
 
-    @POST("/events")
+//    @POST("/events")
+    @POST("/55d244465733d70d1621e974")
     void addNewEvent(@Body Event event, Callback<Event> callback);
 
-    @DELETE("/events/{event_id}")
-    void deleteEvent(@Path("event_id")long eventId, Callback<Event> callback);
+//    @DELETE("/events/{event_id}")
+    @DELETE("/55d2477f5733d7461621e979/{event_id}")
+    void deleteEvent(@Path("event_id")long eventId, Callback<Void> callback);
 }
