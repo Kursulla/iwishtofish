@@ -64,7 +64,7 @@ public class EventsApiTest extends TestCase {
             }
         });
         Thread.sleep(500);
-        assertEquals("API call for AddNewEvent failed. Returned HTTP status is not 200 ", 200, statusCode);
+        assertEquals("API call for AddNewEvent failed. Returned HTTP status is not 201 ", 201, statusCode);
         assertNotNull("API call for AddNewEvent failed. Returned Event object is null ", event);
         assertNotNull("API call for AddNewEvent failed. Returned Event.getId() is 0 ", event.getId());
         event = null;

@@ -23,16 +23,14 @@ public class ApiEventsMock implements Client {
     public Response execute(Request request) throws IOException {
         if(request.getMethod().equals("GET")) {
             String content = new Scanner(new File(EVENTS_GET_FILE_PATH)).useDelimiter("\\Z").next();
-            return new Response(request.getUrl(), 200, "nothing", Collections.EMPTY_LIST, new TypedByteArray("application/json", content.getBytes()));
+            return new Response(request.getUrl(), 200, "no reason", Collections.EMPTY_LIST, new TypedByteArray("application/json", content.getBytes()));
         } else if (request.getMethod().equals("POST")) {
             String content = new Scanner(new File(EVENTS_POST_FILE_PATH)).useDelimiter("\\Z").next();
-            return new Response(request.getUrl(), 200, "nothing", Collections.EMPTY_LIST, new TypedByteArray("application/json", content.getBytes()));
+            return new Response(request.getUrl(), 201, "no reason", Collections.EMPTY_LIST, new TypedByteArray("application/json", content.getBytes()));
         } else if (request.getMethod().equals("DELETE")) {
             String content = new Scanner(new File(EVENTS_DELETE_FILE_PATH)).useDelimiter("\\Z").next();
-            return new Response(request.getUrl(), 204, "nothing", Collections.EMPTY_LIST, new TypedByteArray("application/json", content.getBytes()));
+            return new Response(request.getUrl(), 204, "no reason", Collections.EMPTY_LIST, new TypedByteArray("application/json", content.getBytes()));
         }
         return null;
     }
-
-
 }
