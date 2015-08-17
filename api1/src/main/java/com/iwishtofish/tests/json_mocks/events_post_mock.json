@@ -1,0 +1,12 @@
+{
+  "id": 123,
+  "title": "Title 1",
+  "type": "Feeder",
+  "location": "Berlin",
+  "subLocation": "Wansee",
+  "lat": "52.52541",
+  "lng": "13.4167314",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum massa arcu, sollicitudin nec augue id, finibus iaculis orci. Vivamus maximus lorem ante, vel hendrerit nibh aliquam in. Aliquam ut molestie libero. Ut quis est id nunc cursus faucibus at vitae massa. Suspendisse ut felis sit amet est dignissim vehicula. Sed vitae quam tortor. Quisque est nulla, convallis ac enim quis, consequat tempor justo.",
+  "when": "23/08/2015",
+  "timestamp": "23/08/2015"
+}

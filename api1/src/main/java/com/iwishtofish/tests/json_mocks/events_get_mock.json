@@ -1,0 +1,78 @@
+{
+  "limit": 50,
+  "offset": 0,
+  "items": [
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+       "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+       "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "timestamp": "23/08/2015"
+    }
+  ]
+}
