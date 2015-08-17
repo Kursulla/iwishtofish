@@ -1,7 +1,7 @@
-package com.eutechpro.iwishtofish.api;
+package com.iwishtofish.api.api_interfaces;
 
-import com.eutechpro.iwishtofish.models.APIError;
-import com.eutechpro.iwishtofish.models.APIResponseStatus;
+import com.iwishtofish.api.models.APIError;
+import com.iwishtofish.api.models.APIResponseStatus;
 
 /**
  * Created by Kursulla on 16/08/15.

@@ -1,13 +1,13 @@
-package com.eutechpro.iwishtofish.api;
+package com.iwishtofish.api.api_interfaces;
 
-import com.eutechpro.iwishtofish.models.Comment;
+import com.iwishtofish.api.models.Comment;
 
 import retrofit.http.Body;
 import retrofit.http.DELETE;
-import retrofit.http.Path;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.PUT;
+import retrofit.http.Path;
 
 /**
  *

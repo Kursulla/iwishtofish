@@ -1,12 +1,13 @@
-package com.eutechpro.iwishtofish.APIClients;
+package com.iwishtofish.api.APIClients;
 
-import com.eutechpro.iwishtofish.URLConstants;
-import com.eutechpro.iwishtofish.api.APICallback;
-import com.eutechpro.iwishtofish.api.APIEvents;
-import com.eutechpro.iwishtofish.models.APIError;
-import com.eutechpro.iwishtofish.models.APIResponseStatus;
-import com.eutechpro.iwishtofish.models.Event;
-import com.eutechpro.iwishtofish.models.Events;
+import com.iwishtofish.api.URLConstants;
+import com.iwishtofish.api.api_interfaces.APICallback;
+import com.iwishtofish.api.api_interfaces.APIEvents;
+import com.iwishtofish.api.models.APIError;
+import com.iwishtofish.api.models.APIResponseStatus;
+import com.iwishtofish.api.models.Event;
+import com.iwishtofish.api.models.Events;
+import com.iwishtofish.tests.ApiEventsMock;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -19,29 +20,30 @@ import retrofit.http.Path;
 /**
  * Created by Kursulla on 16/08/15.
  */
-public class EventsAPI {
-    private static EventsAPI singleton;
+public class APIEventsClient {
+    private static APIEventsClient singleton;
     private static APIEvents api;
-    private EventsAPI() {
+
+    private APIEventsClient() {
     }
 
     /* We could benefit from separation init() from get later. */
     public static void init() {
-        singleton = new EventsAPI();
+        singleton = new APIEventsClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(URLConstants.DEV_API_URL)
+                .setEndpoint(URLConstants.API_URL)
                 .setLogLevel(LogLevel.NONE)
+                .setClient(new ApiEventsMock())
                 .build();
-        singleton.api = restAdapter.create(APIEvents.class);
+        api = restAdapter.create(APIEvents.class);
     }
 
-    public static EventsAPI get() {
+    public static APIEventsClient get() {
         if (singleton == null)
             throw new ApiNotInstantiatedException("You forgot to instantiate EventsAPI");
         else
             return singleton;
     }
-
 
     public void allEventsInRegion(@Path("lat") String lat, @Path("lng") String lng, final APICallback callback) {
         callback.beforeStart();
@@ -60,35 +62,35 @@ public class EventsAPI {
     }
 
 
-    public void addNewEvent(@Body Event event, APICallback callback) {
+    public void addNewEvent(@Body Event event, final APICallback callback) {
         callback.beforeStart();
         /* Just forward callback, because no need for any data repacking. */
         api.addNewEvent(event, new Callback<Event>() {
             @Override
             public void success(Event event, Response response) {
-
+                callback.onSuccess(event, new APIResponseStatus(response.getStatus()));
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                callback.onError(new APIError(error.getResponse().getStatus(), error.getResponse().getReason()));
             }
         });
     }
 
 
-    public void deleteEvent(@Path("event_id") long eventId, APICallback callback) {
+    public void deleteEvent(@Path("event_id") long eventId, final APICallback callback) {
         callback.beforeStart();
         /* Just forward callback, because no need for any data repacking. */
-        api.deleteEvent(eventId, new Callback() {
+        api.deleteEvent(eventId, new Callback<Event>() {
             @Override
-            public void success(Object o, Response response) {
-
+            public void success(Event e, Response response) {
+                callback.onSuccess(e, new APIResponseStatus(response.getStatus()));
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                callback.onError(new APIError(error.getResponse().getStatus(), error.getResponse().getReason()));
             }
         });
     }

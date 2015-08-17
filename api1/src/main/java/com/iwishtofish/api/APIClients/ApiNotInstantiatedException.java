@@ -1,4 +1,4 @@
-package com.eutechpro.iwishtofish.APIClients;
+package com.iwishtofish.api.APIClients;
 
 /**
  *

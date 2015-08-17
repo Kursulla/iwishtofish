@@ -1,4 +1,4 @@
-package com.eutechpro.iwishtofish.models;
+package com.iwishtofish.api.models;
 
 import java.util.List;
 
