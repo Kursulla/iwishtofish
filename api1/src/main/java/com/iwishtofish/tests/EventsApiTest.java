@@ -14,8 +14,8 @@ import junit.framework.TestCase;
  */
 public class EventsApiTest extends TestCase {
     private Events events;
-    private Event event;
-    private int statusCode;
+    private Event  event;
+    private int    statusCode;
 
     public void setUp() throws Exception {
         super.setUp();
@@ -26,13 +26,9 @@ public class EventsApiTest extends TestCase {
         events = null;
         APIEventsClient.get().allEventsInRegion("124124", "23452345", new APICallback<Events>() {
             @Override
-            public void beforeStart() {
-                System.out.println("beforeStart");
-            }
-
-            @Override
             public void onSuccess(Events ev, APIResponseStatus responseStatus) {
                 System.out.println("onSuccess");
+                statusCode = responseStatus.getHttpStatus();
                 events = ev;
             }
 
@@ -43,22 +39,21 @@ public class EventsApiTest extends TestCase {
             }
         });
         Thread.sleep(500);
+        assertEquals("API call for AddNewEvent failed. Returned HTTP status is not 200 ", 200, statusCode);
         assertNotNull("API call for GetAllEvents failed. Returned Events object is null ", events);
         assertNotNull("API call for GetAllEvents failed. Returned Events.items is null ", events.getItems());
         assertFalse("API call for GetAllEvents failed. Returned Events.items size is 0 ", events.getItems().size() == 0);
+        event = null;
+        statusCode = 0;
     }
 
     public void testAddNewEvent() throws Exception {
         final Event mockEvent = new Event();
         APIEventsClient.get().addNewEvent(mockEvent, new APICallback<Event>() {
             @Override
-            public void beforeStart() {
-                System.out.println("beforeStart");
-            }
-
-            @Override
             public void onSuccess(Event ev, APIResponseStatus responseStatus) {
                 System.out.println("onSuccess");
+                statusCode = responseStatus.getHttpStatus();
                 event = ev;
             }
 
@@ -69,21 +64,19 @@ public class EventsApiTest extends TestCase {
             }
         });
         Thread.sleep(500);
+        assertEquals("API call for AddNewEvent failed. Returned HTTP status is not 200 ", 200, statusCode);
         assertNotNull("API call for AddNewEvent failed. Returned Event object is null ", event);
         assertNotNull("API call for AddNewEvent failed. Returned Event.getId() is 0 ", event.getId());
+        event = null;
+        statusCode = 0;
     }
 
     public void testDeleteEvent() throws Exception {
         final Event event = new Event();
         APIEventsClient.get().deleteEvent(event.getId(), new APICallback<Object>() {
             @Override
-            public void beforeStart() {
-                System.out.println("beforeStart");
-            }
-
-            @Override
             public void onSuccess(Object responseData, APIResponseStatus responseStatus) {
-                System.out.println("onSuccess "+ responseStatus.getHttpStatus());
+                System.out.println("onSuccess " + responseStatus.getHttpStatus());
                 statusCode = responseStatus.getHttpStatus();
             }
 
@@ -95,6 +88,7 @@ public class EventsApiTest extends TestCase {
         });
         Thread.sleep(500);
         assertEquals("API call for deleteEvent failed. Returned HTTP status is not 204 ", 204, statusCode);
+        statusCode = 0;
     }
 
     public void tearDown() throws Exception {

@@ -46,7 +46,6 @@ public class APIEventsClient {
     }
 
     public void allEventsInRegion(@Path("lat") String lat, @Path("lng") String lng, final APICallback callback) {
-        callback.beforeStart();
         /* Just forward callback, because no need for any data repacking. */
         api.allEventsInRegion(lat, lng, new Callback<Events>() {
             @Override
@@ -63,7 +62,6 @@ public class APIEventsClient {
 
 
     public void addNewEvent(@Body Event event, final APICallback callback) {
-        callback.beforeStart();
         /* Just forward callback, because no need for any data repacking. */
         api.addNewEvent(event, new Callback<Event>() {
             @Override
@@ -80,7 +78,6 @@ public class APIEventsClient {
 
 
     public void deleteEvent(@Path("event_id") long eventId, final APICallback callback) {
-        callback.beforeStart();
         /* Just forward callback, because no need for any data repacking. */
         api.deleteEvent(eventId, new Callback<Event>() {
             @Override
