@@ -5,7 +5,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.iwishtofish.api.models.APIError;
 import com.iwishtofish.api.models.Events;
@@ -34,7 +33,6 @@ public class EventsActivity extends BaseActivity {
 
         fetchEvents();
     }
-
 
     @Override
     protected void _getViewReferences() {
@@ -70,18 +68,16 @@ public class EventsActivity extends BaseActivity {
             public void onSuccess(Events events) {
                 recyclerView.setAdapter(new EventsGridAdapter(events, EventsActivity.this));
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(EventsActivity.this, R.string.toast__refreshed, Toast.LENGTH_SHORT).show();
+                SnackBarControl.showSimpleSnackBar(R.string.toast__refreshed, EventsActivity.this);
             }
 
             @Override
             public void onError(APIError apiError) {
-                Toast.makeText(EventsActivity.this, R.string.events_toast__loading_failed, Toast.LENGTH_LONG).show();
+                SnackBarControl.showSimpleSnackBar(R.string.events_toast__loading_failed, EventsActivity.this);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
-
-
 
 
 
