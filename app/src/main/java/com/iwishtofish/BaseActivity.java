@@ -6,7 +6,7 @@ import android.view.MenuItem;
 
 /**
  *
- * Created by Kursulla on 18/08/15.
+ * Created by Kursulla on 14/08/15.
  */
 public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void _getViewReferences();

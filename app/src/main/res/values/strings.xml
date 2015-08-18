@@ -3,5 +3,11 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <!-- Events-->
     <string name="events_toast__loading_failed">Sorry, but loading of events failed. Please, try again later.</string>
+
+    <plurals name="event_max_persons">
+        <item quantity="one">Max %d person</item>
+        <item quantity="other">Max %d persons</item>
+    </plurals>
 </resources>

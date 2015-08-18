@@ -10,6 +10,11 @@ import com.iwishtofish.api.models.Events;
 import com.iwishtofish.data.ApiCallback;
 import com.iwishtofish.data.EventsManager;
 
+/**
+ * Represents list of all events in set region.
+ *
+ * Created by Kursulla on 18/08/15.
+ */
 public class EventsActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
     public static final int GRID_COLUMN_COUNT = 3;
@@ -32,7 +37,7 @@ public class EventsActivity extends BaseActivity {
 
             @Override
             public void onSuccess(Events events) {
-                recyclerView.setAdapter(new EventsGridAdapter(events));
+                recyclerView.setAdapter(new EventsGridAdapter(events, EventsActivity.this));
             }
 
             @Override
