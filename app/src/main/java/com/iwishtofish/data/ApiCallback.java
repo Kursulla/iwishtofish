@@ -1,4 +1,4 @@
-package com.iwishtofish;
+package com.iwishtofish.data;
 
 import com.iwishtofish.api.models.APIError;
 

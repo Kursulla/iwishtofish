@@ -1,4 +1,4 @@
-package com.iwishtofish;
+package com.iwishtofish.data;
 
 import com.iwishtofish.api.APIClients.APIEventsClient;
 import com.iwishtofish.api.api_interfaces.ServerResponseCallback;

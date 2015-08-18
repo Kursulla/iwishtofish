@@ -1,17 +1,14 @@
 package com.iwishtofish;
 
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iwishtofish.api.models.APIError;
 import com.iwishtofish.api.models.Events;
+import com.iwishtofish.data.ApiCallback;
+import com.iwishtofish.data.EventsManager;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -30,19 +27,17 @@ public class MainActivity extends BaseActivity {
         EventsManager.fetchAllEventsInRegion("234", "234", new ApiCallback<Events>() {
             @Override
             public void beforeStart() {
-                System.out.println("beforeStart");
+                //Start progress bar
             }
 
             @Override
             public void onSuccess(Events events) {
-                System.out.println("onSuccess");
-                RecyclerViewAdapter adapter = new RecyclerViewAdapter(events);
-                recyclerView.setAdapter(adapter);
+                recyclerView.setAdapter(new EventsGridAdapter(events));
             }
 
             @Override
             public void onError(APIError apiError) {
-                System.out.println("onError");
+                Toast.makeText(MainActivity.this, R.string.events_toast__loading_failed, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -69,46 +64,5 @@ public class MainActivity extends BaseActivity {
 
 
 
-    public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.PersonViewHolder> {
 
-        Events events;
-
-        RecyclerViewAdapter(Events events) {
-            this.events = events;
-        }
-
-        @Override
-        public PersonViewHolder onCreateViewHolder(ViewGroup parent, int i) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_event_card, parent, false);
-            PersonViewHolder pvh = new PersonViewHolder(v);
-            return pvh;
-        }
-
-        @Override
-        public void onBindViewHolder(PersonViewHolder personViewHolder, int i) {
-            personViewHolder.title_tv.setText(events.getItems().get(i).getTitle());
-            personViewHolder.title_tv.setText("Desno od zute pumpe");
-            if(i==3)
-                personViewHolder.title_tv.setText("Desno od zute pumpe pa jos malo desnije");
-        }
-
-        @Override
-        public int getItemCount() {
-            return events.getItems().size();
-        }
-
-        public class PersonViewHolder extends RecyclerView.ViewHolder {
-            CardView  cv;
-            TextView  title_tv;
-            TextView  personAge;
-            ImageView personPhoto;
-
-            PersonViewHolder(View itemView) {
-                super(itemView);
-                cv = (CardView) itemView.findViewById(R.id.card_view);
-                title_tv = (TextView) itemView.findViewById(R.id.title_tv);
-            }
-        }
-
-    }
 }
