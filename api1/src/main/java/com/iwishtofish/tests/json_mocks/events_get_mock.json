@@ -5,7 +5,7 @@
     {
       "id": 123,
       "title": "Title 1",
-      "type": "Feeder",
+      "type": "Deeping",
       "location": "Berlin",
       "when": "23/08/2015",
       "max_persons": 4,
@@ -32,7 +32,7 @@
     {
       "id": 123,
       "title": "Title 1",
-      "type": "Feeder",
+      "type": "Floating",
       "location": "Berlin",
       "when": "23/08/2015",
       "max_persons": 2,
@@ -59,7 +59,7 @@
     {
       "id": 123,
       "title": "Title 1",
-      "type": "Feeder",
+      "type": "Bolognese",
       "location": "Berlin",
       "when": "23/08/2015",
       "max_persons": 12,
@@ -77,7 +77,88 @@
     {
       "id": 123,
       "title": "Title 1",
+      "type": "Deeping",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 2,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Deeping",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 4,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
       "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 5,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 7,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Floating",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 2,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 4,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 8,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Bolognese",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 12,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Feeder",
+      "location": "Berlin",
+      "when": "23/08/2015",
+      "max_persons": 4,
+      "timestamp": "23/08/2015"
+    },
+    {
+      "id": 123,
+      "title": "Title 1",
+      "type": "Deeping",
       "location": "Berlin",
       "when": "23/08/2015",
       "max_persons": 2,
