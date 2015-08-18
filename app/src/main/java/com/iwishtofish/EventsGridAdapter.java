@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.iwishtofish.EventsGridAdapter.EventsViewHolder;
 import com.iwishtofish.api.models.Events;
+import com.iwishtofish.data.Technics;
 
 /**
  *
@@ -33,10 +34,10 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
 
     @Override
     public void onBindViewHolder(EventsViewHolder eventsViewHolder, int position) {
-        eventsViewHolder.title_tv.setText(events.getItems().get(position).getTitle());
-        eventsViewHolder.date_tv.setText(events.getItems().get(position).getWhen());
-        int maxPersons = events.getItems().get(position).getMaxPersons();
-        eventsViewHolder.max_persons_tv.setText(context.getResources().getQuantityString(R.plurals.event_max_persons, maxPersons, maxPersons));
+        eventsViewHolder.setType(events.getItems().get(position).getType());
+        eventsViewHolder.setTitle(events.getItems().get(position).getTitle());
+        eventsViewHolder.setDate(events.getItems().get(position).getWhen());
+        eventsViewHolder.setMaxPersons(events.getItems().get(position).getMaxPersons());
     }
 
     @Override
@@ -58,6 +59,30 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
             title_tv = (TextView) itemView.findViewById(R.id.title_tv);
             date_tv = (TextView) itemView.findViewById(R.id.date_tv);
             max_persons_tv = (TextView) itemView.findViewById(R.id.max_persons_tv);
+        }
+
+        void setType(String type){
+            if(Technics.FEEDER.equals(type)){
+                type_icon_iv.setImageResource(R.drawable.ic_proposition_musicarenje);
+            }else if (Technics.FLOATING.equals(type)) {
+                type_icon_iv.setImageResource(R.drawable.ic_proposition_plovak);
+            }else if (Technics.BOLOGNESE.equals(type)) {
+                type_icon_iv.setImageResource(R.drawable.ic_proposition_saran);
+            }else if (Technics.DEEPING.equals(type)) {
+                type_icon_iv.setImageResource(R.drawable.ic_proposition_varalica);
+            }
+        }
+
+        void setTitle(String title) {
+            this.title_tv.setText(title);
+        }
+
+        public void setDate(String date) {
+            this.date_tv.setText(date);
+        }
+
+        public void setMaxPersons(int maxPersons) {
+            this.max_persons_tv.setText(context.getResources().getQuantityString(R.plurals.event_max_persons, maxPersons, maxPersons));
         }
     }
 
