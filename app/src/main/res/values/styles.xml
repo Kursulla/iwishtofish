@@ -9,4 +9,16 @@
         <item name="android:background">@color/primary</item>
         <item name="background">@color/primary</item>
     </style>
+    <style name="p">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="p_small">
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="h">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
