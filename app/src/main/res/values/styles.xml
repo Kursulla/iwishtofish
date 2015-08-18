@@ -9,6 +9,8 @@
         <item name="android:background">@color/primary</item>
         <item name="background">@color/primary</item>
     </style>
+
+
     <style name="p">
         <item name="android:textSize">12sp</item>
     </style>

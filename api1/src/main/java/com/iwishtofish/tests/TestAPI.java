@@ -14,11 +14,6 @@ public class TestAPI {
         APIEventsClient.init();
         APIEventsClient.get().deleteEvent(123, new ServerResponseCallback<Object>() {
             @Override
-            public void beforeStart() {
-                System.out.println("beforeStart");
-            }
-
-            @Override
             public void onSuccess(Object o, APIResponseStatus responseStatus) {
                 System.out.println("onSuccess ");
             }
