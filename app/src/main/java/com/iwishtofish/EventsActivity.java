@@ -1,6 +1,8 @@
 package com.iwishtofish;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ public class EventsActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
     public static final int GRID_COLUMN_COUNT = 3;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,27 +32,20 @@ public class EventsActivity extends BaseActivity {
         _getViewReferences();
         _initViews();
 
-        EventsManager.fetchAllEventsInRegion("234", "234", new ApiCallback<Events>() {
-            @Override
-            public void beforeStart() {
-                //Start progress bar
-            }
-
-            @Override
-            public void onSuccess(Events events) {
-                recyclerView.setAdapter(new EventsGridAdapter(events, EventsActivity.this));
-            }
-
-            @Override
-            public void onError(APIError apiError) {
-                Toast.makeText(EventsActivity.this, R.string.events_toast__loading_failed, Toast.LENGTH_LONG).show();
-            }
-        });
+        fetchEvents();
     }
+
 
     @Override
     protected void _getViewReferences() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchEvents();
+            }
+        });
     }
 
     @Override
@@ -63,8 +59,27 @@ public class EventsActivity extends BaseActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, GRID_COLUMN_COUNT));
     }
 
+    private void fetchEvents() {
+        EventsManager.fetchAllEventsInRegion("234", "234", new ApiCallback<Events>() {
+            @Override
+            public void beforeStart() {
+                //Init something if needed
+            }
 
+            @Override
+            public void onSuccess(Events events) {
+                recyclerView.setAdapter(new EventsGridAdapter(events, EventsActivity.this));
+                swipeRefreshLayout.setRefreshing(false);
+                Toast.makeText(EventsActivity.this, R.string.toast__refreshed, Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onError(APIError apiError) {
+                Toast.makeText(EventsActivity.this, R.string.events_toast__loading_failed, Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+    }
 
 
 
