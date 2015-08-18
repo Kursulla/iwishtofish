@@ -10,7 +10,7 @@ import com.iwishtofish.api.models.Events;
 import com.iwishtofish.data.ApiCallback;
 import com.iwishtofish.data.EventsManager;
 
-public class MainActivity extends BaseActivity {
+public class EventsActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
     public static final int GRID_COLUMN_COUNT = 3;
     private RecyclerView recyclerView;
@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onError(APIError apiError) {
-                Toast.makeText(MainActivity.this, R.string.events_toast__loading_failed, Toast.LENGTH_LONG).show();
+                Toast.makeText(EventsActivity.this, R.string.events_toast__loading_failed, Toast.LENGTH_LONG).show();
             }
         });
     }
