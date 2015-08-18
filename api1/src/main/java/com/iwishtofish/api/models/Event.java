@@ -1,5 +1,7 @@
 package com.iwishtofish.api.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Kursulla on 16/08/15.
  */
@@ -12,8 +14,9 @@ public class Event extends APIResponseData {
     private String lng;
     private String description;
     private String when;
+    @SerializedName("max_persons")
+    private int maxPersons;
     private String timestamp;
-
 
     public Event(long id) {
         super(id);
@@ -81,6 +84,10 @@ public class Event extends APIResponseData {
 
     public void setWhen(String when) {
         this.when = when;
+    }
+
+    public int getMaxPersons() {
+        return maxPersons;
     }
 
     public String getTimestamp() {
