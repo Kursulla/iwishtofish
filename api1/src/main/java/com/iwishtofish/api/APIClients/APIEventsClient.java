@@ -31,7 +31,7 @@ public class APIEventsClient {
         singleton = new APIEventsClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(URLConstants.DEV_API_URL)
-                .setLogLevel(LogLevel.FULL)
+                .setLogLevel(LogLevel.NONE)
 //                .setClient(new ApiEventsMock())//Use only for API tests
                 .build();
         api = restAdapter.create(APIEvents.class);
