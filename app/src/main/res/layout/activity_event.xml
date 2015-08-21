@@ -68,5 +68,12 @@
             android:layout_height="wrap_content"
             style="@style/event_details_label"
             android:text="Comments:" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
