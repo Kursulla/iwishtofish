@@ -21,7 +21,7 @@ public interface APIEvents {
     void allEventsInRegion(@Query("lat") String lat, @Query("lng") String lng, Callback<Events> callback);
 
     //    @GET("/events/{eventId}")
-    @GET("/55d244465733d70d1621e974/{eventId}")
+    @GET("/55d6f490c97bffe803a685d4/{eventId}")
     void getEventDetails(@Path("eventId") long eventId, Callback<Event> callback);
 
 //    @POST("/events")
