@@ -1,25 +1,26 @@
 package com.iwishtofish;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iwishtofish.EventsGridAdapter.EventsViewHolder;
 import com.iwishtofish.api.models.Events;
-import com.iwishtofish.data.Technics;
+import com.iwishtofish.data.EventsManager;
 
 /**
- *
  * Created by Kursulla on 18/08/15.
  */
 public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
     private Context context;
-    private Events events;
+    private Events  events;
 
     EventsGridAdapter(Events events, Context context) {
         this.events = events;
@@ -27,8 +28,16 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
     }
 
     @Override
-    public EventsViewHolder onCreateViewHolder(ViewGroup parent, int position) {
+    public EventsViewHolder onCreateViewHolder(ViewGroup parent, final int position) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_event_card, parent, false);
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, EventActivity.class);
+                intent.putExtra(EventActivity.EVENT_ID,events.getItems().get(position).getId());
+                context.startActivity(intent);
+            }
+        });
         return new EventsViewHolder(view);
     }
 
@@ -61,16 +70,8 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
             max_persons_tv = (TextView) itemView.findViewById(R.id.max_persons_tv);
         }
 
-        void setType(String type){
-            if(Technics.FEEDER.equals(type)){
-                type_icon_iv.setImageResource(R.drawable.ic_proposition_musicarenje);
-            }else if (Technics.FLOATING.equals(type)) {
-                type_icon_iv.setImageResource(R.drawable.ic_proposition_plovak);
-            }else if (Technics.BOLOGNESE.equals(type)) {
-                type_icon_iv.setImageResource(R.drawable.ic_proposition_saran);
-            }else if (Technics.DEEPING.equals(type)) {
-                type_icon_iv.setImageResource(R.drawable.ic_proposition_varalica);
-            }
+        void setType(String type) {
+            type_icon_iv.setImageResource(EventsManager.getTypeResource(type));
         }
 
         void setTitle(String title) {
