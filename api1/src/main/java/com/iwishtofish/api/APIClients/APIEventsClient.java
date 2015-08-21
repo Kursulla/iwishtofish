@@ -44,7 +44,7 @@ public class APIEventsClient {
             return singleton;
     }
 
-    public void allEventsInRegion(@Path("lat") String lat, @Path("lng") String lng, final ServerResponseCallback callback) {
+    public void eventsInRegion(@Path("lat") String lat, @Path("lng") String lng, final ServerResponseCallback callback) {
         /* Just forward callback, because no need for any data repacking. */
         api.allEventsInRegion(lat, lng, new Callback<Events>() {
             @Override
@@ -59,6 +59,20 @@ public class APIEventsClient {
         });
     }
 
+    public void eventDetails(@Path("eventId") long eventId, final ServerResponseCallback callback) {
+        /* Just forward callback, because no need for any data repacking. */
+        api.getEventDetails(eventId, new Callback<Event>() {
+            @Override
+            public void success(Event event, Response response) {
+                callback.onSuccess(event, new APIResponseStatus(response.getStatus()));
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                callback.onError(new APIError(error.getResponse().getStatus(), error.getResponse().getReason()));
+            }
+        });
+    }
 
     public void addNewEvent(@Body Event event, final ServerResponseCallback callback) {
         /* Just forward callback, because no need for any data repacking. */

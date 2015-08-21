@@ -24,7 +24,7 @@ public class EventsApiTest extends TestCase {
 
     public void testGetAllEvents() throws Exception {
         events = null;
-        APIEventsClient.get().allEventsInRegion("124124", "23452345", new ServerResponseCallback<Events>() {
+        APIEventsClient.get().eventsInRegion("124124", "23452345", new ServerResponseCallback<Events>() {
             @Override
             public void onSuccess(Events ev, APIResponseStatus responseStatus) {
                 System.out.println("onSuccess");

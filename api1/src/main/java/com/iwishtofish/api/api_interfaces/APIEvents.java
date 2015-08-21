@@ -20,6 +20,10 @@ public interface APIEvents {
     @GET("/55d349f0ec91e9fe0f5e8e29")
     void allEventsInRegion(@Query("lat") String lat, @Query("lng") String lng, Callback<Events> callback);
 
+    //    @GET("/events/{eventId}")
+    @GET("/55d244465733d70d1621e974/{eventId}")
+    void getEventDetails(@Path("eventId") long eventId, Callback<Event> callback);
+
 //    @POST("/events")
     @POST("/55d244465733d70d1621e974")
     void addNewEvent(@Body Event event, Callback<Event> callback);
