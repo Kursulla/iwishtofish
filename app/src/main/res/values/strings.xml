@@ -8,6 +8,7 @@
 
     <!-- Events-->
     <string name="events_toast__loading_failed">Sorry, but loading of events failed. Please, try again later.</string>
+    <string name="event_toast__loading_failed">Sorry, but loading of event failed. Please, try again later.</string>
 
     <plurals name="event_max_persons">
         <item quantity="one">Max %d person</item>
