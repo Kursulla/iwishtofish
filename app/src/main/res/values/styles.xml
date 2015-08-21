@@ -11,16 +11,29 @@
     </style>
 
 
-    <style name="p">
+    <style name="grid_item_text">
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="p_small">
+    <style name="grid_item_text_sm">
         <item name="android:textSize">8sp</item>
     </style>
 
-    <style name="h">
+    <style name="grid_item_title">
         <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="p">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="p_sm">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="h">
+        <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 </resources>
