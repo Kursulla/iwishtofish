@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iwishtofish.api.models.APIError;
+import com.iwishtofish.api.models.Event;
 import com.iwishtofish.data.ApiCallback;
 import com.iwishtofish.data.EventsManager;
 
@@ -21,6 +22,7 @@ public class EventActivity extends BaseActivity {
     private TextView  sublocation;
     private TextView  description;
     private long      eventId;
+    private Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +31,17 @@ public class EventActivity extends BaseActivity {
         EventsManager.init();
         _getViewReferences();
         _getBundledData();
-        _initViews();
 
-        EventsManager.fetchEventDetails(eventId, new ApiCallback() {
+        EventsManager.fetchEventDetails(eventId, new ApiCallback<Event>() {
             @Override
             public void beforeStart() {
                 //start loader
             }
 
             @Override
-            public void onSuccess(Object resultData) {
-                _initViews();
+            public void onSuccess(Event ev) {
+                event = ev;
+                 _initViews();
                 //stop loader
             }
 
@@ -71,6 +73,10 @@ public class EventActivity extends BaseActivity {
 
     @Override
     protected void _initViews() {
-
+        title.setText(event.getTitle());
+        location.setText(event.getLocation());
+        sublocation.setText(event.getSubLocation());
+        date.setText(event.getWhen());
+        description.setText(event.getDescription());
     }
 }
