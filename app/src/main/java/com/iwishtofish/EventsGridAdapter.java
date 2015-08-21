@@ -16,6 +16,7 @@ import com.iwishtofish.api.models.Events;
 import com.iwishtofish.data.EventsManager;
 
 /**
+ *
  * Created by Kursulla on 18/08/15.
  */
 public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
@@ -35,7 +36,7 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
             public void onClick(View view) {
                 Intent intent = new Intent(context, EventActivity.class);
                 intent.putExtra(EventActivity.EVENT_ID,events.getItems().get(position).getId());
-                context.startActivity(intent);
+                intent.putExtra(EventActivity.EVENT_TYPE,events.getItems().get(position).getType());
             }
         });
         return new EventsViewHolder(view);

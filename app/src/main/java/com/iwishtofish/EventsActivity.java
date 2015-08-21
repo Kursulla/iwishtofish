@@ -31,7 +31,7 @@ public class EventsActivity extends BaseActivity {
         _getViewReferences();
         _initViews();
 
-        fetchEvents();
+        _loadData();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class EventsActivity extends BaseActivity {
         swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                fetchEvents();
+                _loadData();
             }
         });
     }
@@ -52,16 +52,12 @@ public class EventsActivity extends BaseActivity {
     }
 
     @Override
-    protected void _initViews() {
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, GRID_COLUMN_COUNT));
-    }
-
-    private void fetchEvents() {
+    protected void _loadData() {
         EventsManager.fetchAllEventsInRegion("234", "234", new ApiCallback<Events>() {
             @Override
             public void beforeStart() {
                 //Init something if needed
+                swipeRefreshLayout.setRefreshing(true);
             }
 
             @Override
@@ -78,7 +74,11 @@ public class EventsActivity extends BaseActivity {
             }
         });
     }
+    @Override
+    protected void _initViews() {
+        super._initViews();
 
-
-
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, GRID_COLUMN_COUNT));
+    }
 }
