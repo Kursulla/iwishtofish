@@ -19,7 +19,6 @@ public class EventActivity extends BaseActivity {
     private TextView  title;
     private TextView  date;
     private TextView  location;
-    private TextView  sublocation;
     private TextView  description;
     private long      eventId;
     private Event event;
@@ -59,7 +58,6 @@ public class EventActivity extends BaseActivity {
         title = (TextView) findViewById(R.id.title_tv);
         date = (TextView)findViewById(R.id.date_tv);
         location = (TextView)findViewById(R.id.location_tv);
-        sublocation = (TextView)findViewById(R.id.sub_location_tv);
         description = (TextView)findViewById(R.id.description_tv);
     }
 
@@ -73,9 +71,9 @@ public class EventActivity extends BaseActivity {
 
     @Override
     protected void _initViews() {
+        type.setImageResource(EventsManager.getTypeResource(event.getType()));
         title.setText(event.getTitle());
-        location.setText(event.getLocation());
-        sublocation.setText(event.getSubLocation());
+        location.setText(event.getLocation() + ", " + event.getSubLocation());
         date.setText(event.getWhen());
         description.setText(event.getDescription());
     }
