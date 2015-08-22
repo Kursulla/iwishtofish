@@ -37,6 +37,7 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
                 Intent intent = new Intent(context, EventActivity.class);
                 intent.putExtra(EventActivity.EVENT_ID,events.getItems().get(position).getId());
                 intent.putExtra(EventActivity.EVENT_TYPE,events.getItems().get(position).getType());
+                context.startActivity(intent);
             }
         });
         return new EventsViewHolder(view);
