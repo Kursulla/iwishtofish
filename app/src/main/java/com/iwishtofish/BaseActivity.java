@@ -11,16 +11,19 @@ import android.view.MenuItem;
  * Created by Kursulla on 14/08/15.
  */
 public abstract class BaseActivity extends AppCompatActivity {
-
     protected Toolbar toolbar;
+    protected LeftDrawerFragment leftDrawerFragment;
 
     protected abstract void _getViewReferences();
+
     protected abstract void _getBundledData();
+
     protected abstract void _loadData();
 
-    protected  void _initViews(){
+    protected void _initViews() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -39,7 +42,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(leftDrawerFragment != null && leftDrawerFragment.isOpen()){
+            leftDrawerFragment.closeDrawer();
+            return;
+        }
+
+        super.onBackPressed();
     }
 }

@@ -16,4 +16,11 @@
 
     <color name="technic_bolognese">#c43d6f</color>
     <color name="technic_bolognese_dark">#961142</color>
+
+    <color name="nav_drawer_bg_more">#111111</color>
+    <color name="nav_drawer_bg_active">#171717</color>
+    <color name="nav_drawer_bg_normal">#333333</color>
+    <color name="nav_drawer_separator">#111111</color>
+    <color name="nav_drawer_text_normal">#ffffff</color>
+    <color name="nav_drawer_text_active">#23BAE7</color>
 </resources>

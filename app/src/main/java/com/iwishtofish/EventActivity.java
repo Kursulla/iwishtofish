@@ -3,6 +3,7 @@ package com.iwishtofish;
 import android.annotation.TargetApi;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import com.iwishtofish.api.models.Event;
 import com.iwishtofish.data.EventsManager;
 import com.iwishtofish.data.Technics;
 import com.iwishtofish.utils.OSUtil;
+import com.iwishtofish.utils.SnackBarControl;
 
 /**
  *
@@ -36,13 +38,13 @@ public class EventActivity extends BaseActivity {
         setContentView(R.layout.activity_event);
 
         EventsManager.init();
+
         _getViewReferences();
         _getBundledData();
         _initViews();
 
         event = EventsManager.getEvent(eventIndex);
         _loadData();
-
     }
 
     @Override
@@ -79,6 +81,17 @@ public class EventActivity extends BaseActivity {
         if(OSUtil.isAfterLollipop()) {
             initMaterialColors();
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initMaterialColors() {

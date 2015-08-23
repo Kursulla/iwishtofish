@@ -1,4 +1,4 @@
-package com.iwishtofish;
+package com.iwishtofish.utils;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -7,6 +7,8 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import com.iwishtofish.R;
 
 /**
  * Light SnackBar wrapper

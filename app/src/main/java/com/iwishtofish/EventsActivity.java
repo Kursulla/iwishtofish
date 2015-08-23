@@ -1,15 +1,18 @@
 package com.iwishtofish;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.iwishtofish.api.models.APIError;
 import com.iwishtofish.api.models.Events;
 import com.iwishtofish.data.ApiCallback;
 import com.iwishtofish.data.EventsManager;
+import com.iwishtofish.utils.SnackBarControl;
 
 /**
  * Represents list of all events in set region.
@@ -80,5 +83,26 @@ public class EventsActivity extends BaseActivity {
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, GRID_COLUMN_COUNT));
+
+        leftDrawerFragment = (LeftDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_left_drawer);
+        if (leftDrawerFragment != null) {
+            leftDrawerFragment.setUp((DrawerLayout) findViewById(R.id.drawer_layout));
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                onBackPressed();
+//                return true;
+//        }
+
+        if(leftDrawerFragment.getDrawerToggle().onOptionsItemSelected(item)){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
