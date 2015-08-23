@@ -80,6 +80,7 @@ public class EventActivity extends BaseActivity {
         if (OSUtil.isAfterLollipop()) {
             initMaterialColors();
         }
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
