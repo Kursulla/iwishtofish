@@ -20,9 +20,9 @@ import com.iwishtofish.utils.SnackBarControl;
  * Created by Kursulla on 21/08/15.
  */
 public class EventActivity extends BaseActivity {
-    private static final String TAG        = "EventActivity";
+    private static final String TAG        = EventActivity.class.getSimpleName();
     public static final  String EVENT_INDEX = "EVENT_INDEX";
-    public static final  String EVENT_TYPE  = "TYPE";
+    public static final  String EVENT_TYPE = "TYPE";
     private ImageView type;
     private TextView  title;
     private TextView  date;
@@ -81,7 +81,8 @@ public class EventActivity extends BaseActivity {
         if(OSUtil.isAfterLollipop()) {
             initMaterialColors();
         }
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -96,18 +97,23 @@ public class EventActivity extends BaseActivity {
 
     private void initMaterialColors() {
         if (eventType != null) {
-            if (eventType.equals(Technics.FEEDER)) {
-                toolbar.setBackgroundColor(getResources().getColor(R.color.technic_feeder));
-                setStatusBatColor(getResources().getColor(R.color.technic_feeder_dark));
-            } else if (eventType.equals(Technics.DEEPING)) {
-                toolbar.setBackgroundColor(getResources().getColor(R.color.technic_deeping));
-                setStatusBatColor(getResources().getColor(R.color.technic_deeping_dark));
-            } else if (eventType.equals(Technics.BOLOGNESE)) {
-                toolbar.setBackgroundColor(getResources().getColor(R.color.technic_bolognese));
-                setStatusBatColor(getResources().getColor(R.color.technic_bolognese_dark));
-            } else if (eventType.equals(Technics.FLOATING)) {
-                toolbar.setBackgroundColor(getResources().getColor(R.color.technic_floating));
-                setStatusBatColor(getResources().getColor(R.color.technic_floating_dark));
+            switch (eventType) {
+                case Technics.FEEDER:
+                    toolbar.setBackgroundColor(getResources().getColor(R.color.technic_feeder));
+                    setStatusBatColor(getResources().getColor(R.color.technic_feeder_dark));
+                    break;
+                case Technics.DEEPING:
+                    toolbar.setBackgroundColor(getResources().getColor(R.color.technic_deeping));
+                    setStatusBatColor(getResources().getColor(R.color.technic_deeping_dark));
+                    break;
+                case Technics.BOLOGNESE:
+                    toolbar.setBackgroundColor(getResources().getColor(R.color.technic_bolognese));
+                    setStatusBatColor(getResources().getColor(R.color.technic_bolognese_dark));
+                    break;
+                case Technics.FLOATING:
+                    toolbar.setBackgroundColor(getResources().getColor(R.color.technic_floating));
+                    setStatusBatColor(getResources().getColor(R.color.technic_floating_dark));
+                    break;
             }
         }
     }

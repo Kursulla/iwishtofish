@@ -16,13 +16,13 @@ import com.iwishtofish.utils.SnackBarControl;
 
 /**
  * Represents list of all events in set region.
- *
+ * <p/>
  * Created by Kursulla on 18/08/15.
  */
 public class EventsActivity extends BaseActivity {
-    private static final String TAG = "MainActivity";
-    public static final int GRID_COLUMN_COUNT = 3;
-    private RecyclerView recyclerView;
+    private static final String TAG               = EventsActivity.class.getSimpleName();
+    public static final  int    GRID_COLUMN_COUNT = 3;
+    private RecyclerView       recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
@@ -77,6 +77,7 @@ public class EventsActivity extends BaseActivity {
             }
         });
     }
+
     @Override
     protected void _initViews() {
         super._initViews();
@@ -88,18 +89,14 @@ public class EventsActivity extends BaseActivity {
         if (leftDrawerFragment != null) {
             leftDrawerFragment.setUp((DrawerLayout) findViewById(R.id.drawer_layout));
         }
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                onBackPressed();
-//                return true;
-//        }
-
-        if(leftDrawerFragment.getDrawerToggle().onOptionsItemSelected(item)){
+        if (leftDrawerFragment.getDrawerToggle().onOptionsItemSelected(item)) {
             return true;
         }
 
