@@ -16,30 +16,35 @@
         android:layout_marginBottom="10dp"/>
 
     <com.iwishtofish.navigation_drawer.DrawerItem
+        android:id="@+id/fishing_events"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_events_around"
         app:menuItemIcon="@drawable/ic_drawer_events_around"/>
 
     <com.iwishtofish.navigation_drawer.DrawerItem
+        android:id="@+id/report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_report_idiots"
         app:menuItemIcon="@drawable/ic_drawer_report" />
 
     <com.iwishtofish.navigation_drawer.DrawerItem
+        android:id="@+id/picture_trophy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_share_trophy"
         app:menuItemIcon="@drawable/ic_drawer_picture_trophy" />
 
     <com.iwishtofish.navigation_drawer.DrawerItem
+        android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_settings"
         app:menuItemIcon="@drawable/ic_drawer_settings" />
 
     <com.iwishtofish.navigation_drawer.DrawerItem
+        android:id="@+id/about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_about"

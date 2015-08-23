@@ -7,7 +7,6 @@ package com.iwishtofish.navigation_drawer;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -57,14 +56,4 @@ public class DrawerItem extends RelativeLayout {
         drawerItemText.setText(text);
         drawerItemIcon.setImageResource(iconResource);
     }
-
-    public void setOnClickListener(OnClickListener onClickListener) {
-        super.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-    }
-
 }

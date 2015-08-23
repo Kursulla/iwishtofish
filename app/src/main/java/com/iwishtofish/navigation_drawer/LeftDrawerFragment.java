@@ -1,5 +1,6 @@
 package com.iwishtofish.navigation_drawer;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import com.iwishtofish.EventsActivity;
 import com.iwishtofish.R;
 
 /**
@@ -23,22 +26,65 @@ public class LeftDrawerFragment extends Fragment {
     private static String TAG = LeftDrawerFragment.class.getSimpleName();
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout          drawerLayout;
+    private View container;
     private UserDrawerItem userWidget;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    private DrawerItem fishingEvents;
+    private DrawerItem report;
+    private DrawerItem pictureTrophy;
+    private DrawerItem settings;
+    private DrawerItem about;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_left_drawer, container, false);
-        view.findViewById(R.id.left_drawer_container).setOnClickListener(null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+        container = inflater.inflate(R.layout.fragment_left_drawer, parent, false);
+        container.findViewById(R.id.left_drawer_container).setOnClickListener(null);
 
-        userWidget = (UserDrawerItem) view.findViewById(R.id.user_widget);
+        userWidget = (UserDrawerItem) container.findViewById(R.id.user_widget);
+        fishingEvents = (DrawerItem) container.findViewById(R.id.fishing_events);
+        report = (DrawerItem) container.findViewById(R.id.report);
+        pictureTrophy = (DrawerItem) container.findViewById(R.id.picture_trophy);
+        settings = (DrawerItem) container.findViewById(R.id.settings);
+        about = (DrawerItem) container.findViewById(R.id.about);
+
         userWidget.setUser("Nebojsa Bozic", null);//TODO still static
-        return view;
+
+        fishingEvents.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EventsActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        report.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EventsActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        pictureTrophy.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EventsActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        settings.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EventsActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        about.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EventsActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        return container;
     }
 
     @Override
