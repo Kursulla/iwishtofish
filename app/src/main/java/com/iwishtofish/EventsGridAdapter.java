@@ -1,5 +1,6 @@
 package com.iwishtofish;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.iwishtofish.EventsGridAdapter.EventsViewHolder;
 import com.iwishtofish.api.models.Events;
 import com.iwishtofish.data.EventsManager;
+import com.iwishtofish.utils.OSUtil;
 
 /**
  *
@@ -37,14 +39,14 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
 
 
         view.setOnClickListener(new OnClickListener() {
+            @TargetApi(VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, EventActivity.class);
                 intent.putExtra(EventActivity.EVENT_INDEX, eventsViewHolder.getAdapterPosition());
                 intent.putExtra(EventActivity.EVENT_TYPE, events.getItems().get(eventsViewHolder.getAdapterPosition()).getType());
 
-
-                if (android.os.Build.VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+                if (OSUtil.isAfterLollipop()) {
                     ImageView img = (ImageView) view.findViewById(R.id.type_icon_iv);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity, img, "type_icon");
                     activity.startActivity(intent, options.toBundle());
