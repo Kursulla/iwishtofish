@@ -29,7 +29,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:transitionName="type_icon"
-                android:contentDescription="Icon identifying fishing type"
+                android:contentDescription="@string/left_drawer_content_fishing_type_icon"
                 android:src="@drawable/ic_launcher" />
 
             <LinearLayout

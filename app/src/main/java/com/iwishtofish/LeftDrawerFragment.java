@@ -13,7 +13,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 /**
  * Created by Kursulla on 23/08/15.
@@ -22,6 +21,7 @@ public class LeftDrawerFragment extends Fragment {
     private static String TAG = LeftDrawerFragment.class.getSimpleName();
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout          drawerLayout;
+    private UserDrawerItem userWidget;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,10 +32,10 @@ public class LeftDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_left_drawer, container, false);
-        LinearLayout leftDrawerContainer = (LinearLayout)view.findViewById(R.id.left_drawer_container);
+        view.findViewById(R.id.left_drawer_container).setOnClickListener(null);
 
-
-
+        userWidget = (UserDrawerItem) view.findViewById(R.id.user_widget);
+        userWidget.setUser("Nebojsa Bozic", null);//TODO still static
         return view;
     }
 
@@ -47,7 +47,7 @@ public class LeftDrawerFragment extends Fragment {
         }
     }
 
-    public void setUp(DrawerLayout drawerLayout){
+    public void setUp(DrawerLayout drawerLayout) {
         this.drawerLayout = drawerLayout;
         this.drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
@@ -64,7 +64,6 @@ public class LeftDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
-                getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
 
             @Override
@@ -73,11 +72,6 @@ public class LeftDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
-//                if (LeftDrawerFragment.this.drawerLayout != null) {
-//                    DeviceUtil.hideKeyboard(LeftDrawerFragment.this.drawerLayout);
-//                }
-
-                getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
         };
 

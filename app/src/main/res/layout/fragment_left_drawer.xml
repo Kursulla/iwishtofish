@@ -2,14 +2,46 @@
 <LinearLayout
     android:id="@+id/left_drawer_container"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="@dimen/navigation_drawer_width"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/nav_drawer_item_bg_selector"
-    >
+    android:background="@color/primary_darker"
+   >
 
-    <ImageView
+    <com.iwishtofish.UserDrawerItem
+        android:id="@+id/user_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"/>
+
+    <com.iwishtofish.DrawerItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher" />
+        app:menuItemText="@string/left_drawer_events_around"
+        app:menuItemIcon="@drawable/ic_drawer_events_around"/>
+
+    <com.iwishtofish.DrawerItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:menuItemText="@string/left_drawer_report_idiots"
+        app:menuItemIcon="@drawable/ic_drawer_report" />
+
+    <com.iwishtofish.DrawerItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:menuItemText="@string/left_drawer_share_trophy"
+        app:menuItemIcon="@drawable/ic_drawer_picture_trophy" />
+
+    <com.iwishtofish.DrawerItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:menuItemText="@string/left_drawer_settings"
+        app:menuItemIcon="@drawable/ic_drawer_settings" />
+
+    <com.iwishtofish.DrawerItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:menuItemText="@string/left_drawer_about"
+        app:menuItemIcon="@drawable/ic_drawer_about_us" />
 </LinearLayout>
