@@ -56,9 +56,6 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
             }
         });
 
-
-
-
         return eventsViewHolder;
     }
 
@@ -66,6 +63,7 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
     public void onBindViewHolder(EventsViewHolder eventsViewHolder, int position) {
         eventsViewHolder.setType(events.getItems().get(position).getType());
         eventsViewHolder.setTitle(events.getItems().get(position).getTitle());
+        eventsViewHolder.setLocation(events.getItems().get(position).getLocation());
         eventsViewHolder.setDate(events.getItems().get(position).getWhen());
         eventsViewHolder.setMaxPersons(events.getItems().get(position).getMaxPersons());
     }
@@ -79,6 +77,7 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
         CardView  cv;
         ImageView type_icon_iv;
         TextView  title_tv;
+        TextView  location_tv;
         TextView  date_tv;
         TextView  max_persons_tv;
 
@@ -87,6 +86,7 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
             cv = (CardView) itemView.findViewById(R.id.card_view);
             type_icon_iv = (ImageView) itemView.findViewById(R.id.type_icon_iv);
             title_tv = (TextView) itemView.findViewById(R.id.title_tv);
+            location_tv = (TextView) itemView.findViewById(R.id.location_tv);
             date_tv = (TextView) itemView.findViewById(R.id.date_tv);
             max_persons_tv = (TextView) itemView.findViewById(R.id.max_persons_tv);
         }
@@ -97,6 +97,9 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
 
         void setTitle(String title) {
             this.title_tv.setText(title);
+        }
+        void setLocation(String location) {
+            this.location_tv.setText(location);
         }
 
         public void setDate(String date) {
