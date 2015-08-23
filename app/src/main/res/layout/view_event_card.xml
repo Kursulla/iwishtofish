@@ -23,6 +23,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
+            android:transitionName="type_icon"
             android:src="@drawable/ic_proposition_musicarenje"/>
 
         <TextView
@@ -31,8 +32,10 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:layout_below="@+id/type_icon_iv"
             style="@style/grid_item_title"
+            android:transitionName="title"
             />
 
         <TextView
@@ -43,6 +46,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/title_tv"
             style="@style/grid_item_text"
+            android:transitionName="date"
             android:text="27. August 2015, 05:00" />
 
         <TextView

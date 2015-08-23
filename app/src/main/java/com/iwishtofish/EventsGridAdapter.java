@@ -1,7 +1,9 @@
 package com.iwishtofish;
 
-import android.content.Context;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build.VERSION_CODES;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,27 +22,42 @@ import com.iwishtofish.data.EventsManager;
  * Created by Kursulla on 18/08/15.
  */
 public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
-    private Context context;
-    private Events  events;
+    private Activity activity;
+    private Events   events;
 
-    EventsGridAdapter(Events events, Context context) {
+    EventsGridAdapter(Events events, Activity context) {
         this.events = events;
-        this.context = context;
+        this.activity = context;
     }
 
     @Override
-    public EventsViewHolder onCreateViewHolder(ViewGroup parent, final int position) {
+    public EventsViewHolder onCreateViewHolder(final ViewGroup parent, final int position) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_event_card, parent, false);
+        final EventsViewHolder eventsViewHolder = new EventsViewHolder(view);
+
+
         view.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, EventActivity.class);
-                intent.putExtra(EventActivity.EVENT_ID,events.getItems().get(position).getId());
-                intent.putExtra(EventActivity.EVENT_TYPE,events.getItems().get(position).getType());
-                context.startActivity(intent);
+                Intent intent = new Intent(activity, EventActivity.class);
+                intent.putExtra(EventActivity.EVENT_INDEX, eventsViewHolder.getAdapterPosition());
+                intent.putExtra(EventActivity.EVENT_TYPE, events.getItems().get(eventsViewHolder.getAdapterPosition()).getType());
+
+
+                if (android.os.Build.VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+                    ImageView img = (ImageView) view.findViewById(R.id.type_icon_iv);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity, img, "type_icon");
+                    activity.startActivity(intent, options.toBundle());
+                } else {
+                    activity.startActivity(intent);
+                }
             }
         });
-        return new EventsViewHolder(view);
+
+
+
+
+        return eventsViewHolder;
     }
 
     @Override
@@ -85,7 +102,7 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
         }
 
         public void setMaxPersons(int maxPersons) {
-            this.max_persons_tv.setText(context.getResources().getQuantityString(R.plurals.event_max_persons, maxPersons, maxPersons));
+            this.max_persons_tv.setText(activity.getResources().getQuantityString(R.plurals.event_max_persons, maxPersons, maxPersons));
         }
     }
 
