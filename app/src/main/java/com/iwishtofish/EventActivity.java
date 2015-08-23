@@ -1,15 +1,20 @@
 package com.iwishtofish;
 
-import android.graphics.Color;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iwishtofish.api.models.Event;
 import com.iwishtofish.data.EventsManager;
 import com.iwishtofish.data.Technics;
+import com.iwishtofish.utils.OSUtil;
 
 /**
+ *
  * Created by Kursulla on 21/08/15.
  */
 public class EventActivity extends BaseActivity {
@@ -29,6 +34,7 @@ public class EventActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+
         EventsManager.init();
         _getViewReferences();
         _getBundledData();
@@ -70,16 +76,34 @@ public class EventActivity extends BaseActivity {
     @Override
     protected void _initViews() {
         super._initViews();
+        if(OSUtil.isAfterLollipop()) {
+            initMaterialColors();
+        }
+    }
+
+    private void initMaterialColors() {
         if (eventType != null) {
             if (eventType.equals(Technics.FEEDER)) {
-                toolbar.setBackgroundColor(Color.parseColor("#3ec261"));
+                toolbar.setBackgroundColor(getResources().getColor(R.color.technic_feeder));
+                setStatusBatColor(getResources().getColor(R.color.technic_feeder_dark));
             } else if (eventType.equals(Technics.DEEPING)) {
-                toolbar.setBackgroundColor(Color.parseColor("#3da5c4"));
+                toolbar.setBackgroundColor(getResources().getColor(R.color.technic_deeping));
+                setStatusBatColor(getResources().getColor(R.color.technic_deeping_dark));
             } else if (eventType.equals(Technics.BOLOGNESE)) {
-                toolbar.setBackgroundColor(Color.parseColor("#c43d6f"));
+                toolbar.setBackgroundColor(getResources().getColor(R.color.technic_bolognese));
+                setStatusBatColor(getResources().getColor(R.color.technic_bolognese_dark));
             } else if (eventType.equals(Technics.FLOATING)) {
-                toolbar.setBackgroundColor(Color.parseColor("#e68830"));
+                toolbar.setBackgroundColor(getResources().getColor(R.color.technic_floating));
+                setStatusBatColor(getResources().getColor(R.color.technic_floating_dark));
             }
         }
+    }
+
+    @TargetApi(VERSION_CODES.LOLLIPOP)
+    private void setStatusBatColor(int color){
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(color);
     }
 }

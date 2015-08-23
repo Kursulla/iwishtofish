@@ -4,4 +4,16 @@
     <color name="primary_dark">#388E3C</color>
     <color name="accent">#A5D6A7</color>
     <color name="light">#F1F8E9</color>
+
+    <color name="technic_feeder">#3dc461</color>
+    <color name="technic_feeder_dark">#119634</color>
+
+    <color name="technic_deeping">#3da5c4</color>
+    <color name="technic_deeping_dark">#117996</color>
+
+    <color name="technic_floating">#e68830</color>
+    <color name="technic_floating_dark">#d67922</color>
+
+    <color name="technic_bolognese">#c43d6f</color>
+    <color name="technic_bolognese_dark">#961142</color>
 </resources>
