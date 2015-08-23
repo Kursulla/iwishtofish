@@ -17,7 +17,7 @@ import retrofit.http.Query;
  */
 public interface APIEvents {
 //    @GET("/events")
-    @GET("/55d349f0ec91e9fe0f5e8e29")
+    @GET("/55d99c34f1538bc301471d57")
     void allEventsInRegion(@Query("lat") String lat, @Query("lng") String lng, Callback<Events> callback);
 
     //    @GET("/events/{eventId}")

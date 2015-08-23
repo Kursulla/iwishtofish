@@ -13,15 +13,26 @@ import com.iwishtofish.api.models.Events;
  * Created by Kursulla on 12/08/15.
  */
 public class EventsManager {
+    private static Events events;
+
     public static void init() {
         APIEventsClient.init();
+    }
+
+    public static Events getEvents() {
+        return events;
+    }
+
+    public static Event getEvent(int index) {
+        return events.getItems().get(index);
     }
 
     public static void fetchAllEventsInRegion(String lat, String lng, final ApiCallback<Events> callback) {
         callback.beforeStart();
         APIEventsClient.get().eventsInRegion(lat, lng, new ServerResponseCallback<Events>() {
             @Override
-            public void onSuccess(Events events, APIResponseStatus responseStatus) {
+            public void onSuccess(Events ev, APIResponseStatus responseStatus) {
+                events = ev;
                 callback.onSuccess(events);
             }
 
