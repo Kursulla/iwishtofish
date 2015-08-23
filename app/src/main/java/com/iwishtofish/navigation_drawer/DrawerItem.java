@@ -1,4 +1,4 @@
-package com.iwishtofish;
+package com.iwishtofish.navigation_drawer;
 
 /**
  * Created by Kursulla on 23/08/15.
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.iwishtofish.R;
 
 public class DrawerItem extends RelativeLayout {
     protected TextView  drawerItemText;

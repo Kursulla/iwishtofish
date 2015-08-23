@@ -12,6 +12,7 @@ import com.iwishtofish.api.models.APIError;
 import com.iwishtofish.api.models.Events;
 import com.iwishtofish.data.ApiCallback;
 import com.iwishtofish.data.EventsManager;
+import com.iwishtofish.navigation_drawer.LeftDrawerFragment;
 import com.iwishtofish.utils.SnackBarControl;
 
 /**

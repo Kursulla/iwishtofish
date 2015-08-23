@@ -1,4 +1,4 @@
-package com.iwishtofish;
+package com.iwishtofish.navigation_drawer;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.iwishtofish.R;
 
 /**
  * Created by Kursulla on 23/08/15.

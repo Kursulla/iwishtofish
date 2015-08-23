@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.iwishtofish.api.models.Event;
 import com.iwishtofish.data.EventsManager;
 import com.iwishtofish.data.Technics;
-import com.iwishtofish.utils.OSUtil;
+import com.iwishtofish.utils.AndroidVersionUtil;
 import com.iwishtofish.utils.SnackBarControl;
 
 /**
@@ -29,20 +29,14 @@ public class EventActivity extends BaseActivity {
     private TextView  description;
     private int       eventIndex;
     private String    eventType;
-    private Event     event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
-
-        EventsManager.init();
-
         _getViewReferences();
         _getBundledData();
         _initViews();
-
-        event = EventsManager.getEvent(eventIndex);
         _loadData();
     }
 
@@ -67,6 +61,7 @@ public class EventActivity extends BaseActivity {
 
     @Override
     protected void _loadData() {
+        Event event = EventsManager.getEvent(eventIndex);
         type.setImageResource(EventsManager.getTypeResource(event.getType()));
         title.setText(event.getTitle());
         location.setText(event.getLocation() + ", " + event.getSubLocation());
@@ -77,7 +72,7 @@ public class EventActivity extends BaseActivity {
     @Override
     protected void _initViews() {
         super._initViews();
-        if (OSUtil.isAfterLollipop()) {
+        if (AndroidVersionUtil.isAfterLollipop()) {
             initMaterialColors();
         }
 

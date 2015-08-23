@@ -9,37 +9,37 @@
     android:background="@color/primary_darker"
    >
 
-    <com.iwishtofish.UserDrawerItem
+    <com.iwishtofish.navigation_drawer.UserDrawerItem
         android:id="@+id/user_widget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
 
-    <com.iwishtofish.DrawerItem
+    <com.iwishtofish.navigation_drawer.DrawerItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_events_around"
         app:menuItemIcon="@drawable/ic_drawer_events_around"/>
 
-    <com.iwishtofish.DrawerItem
+    <com.iwishtofish.navigation_drawer.DrawerItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_report_idiots"
         app:menuItemIcon="@drawable/ic_drawer_report" />
 
-    <com.iwishtofish.DrawerItem
+    <com.iwishtofish.navigation_drawer.DrawerItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_share_trophy"
         app:menuItemIcon="@drawable/ic_drawer_picture_trophy" />
 
-    <com.iwishtofish.DrawerItem
+    <com.iwishtofish.navigation_drawer.DrawerItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_settings"
         app:menuItemIcon="@drawable/ic_drawer_settings" />
 
-    <com.iwishtofish.DrawerItem
+    <com.iwishtofish.navigation_drawer.DrawerItem
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:menuItemText="@string/left_drawer_about"

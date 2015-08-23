@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.iwishtofish.EventsGridAdapter.EventsViewHolder;
 import com.iwishtofish.api.models.Events;
 import com.iwishtofish.data.EventsManager;
-import com.iwishtofish.utils.OSUtil;
+import com.iwishtofish.utils.AndroidVersionUtil;
 
 /**
  *
@@ -46,7 +46,7 @@ public class EventsGridAdapter extends RecyclerView.Adapter<EventsViewHolder> {
                 intent.putExtra(EventActivity.EVENT_INDEX, eventsViewHolder.getAdapterPosition());
                 intent.putExtra(EventActivity.EVENT_TYPE, events.getItems().get(eventsViewHolder.getAdapterPosition()).getType());
 
-                if (OSUtil.isAfterLollipop()) {
+                if (AndroidVersionUtil.isAfterLollipop()) {
                     ImageView img = (ImageView) view.findViewById(R.id.type_icon_iv);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity, img, "type_icon");
                     activity.startActivity(intent, options.toBundle());

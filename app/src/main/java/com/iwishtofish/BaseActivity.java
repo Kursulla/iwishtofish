@@ -6,12 +6,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.iwishtofish.navigation_drawer.LeftDrawerFragment;
+
 /**
- *
  * Created by Kursulla on 14/08/15.
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    protected Toolbar toolbar;
+    protected Toolbar            toolbar;
     protected LeftDrawerFragment leftDrawerFragment;
 
     protected abstract void _getViewReferences();
@@ -23,7 +24,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void _initViews() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
     }
 
     @Override
@@ -47,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(leftDrawerFragment != null && leftDrawerFragment.isOpen()){
+        if (leftDrawerFragment != null && leftDrawerFragment.isOpen()) {
             leftDrawerFragment.closeDrawer();
             return;
         }

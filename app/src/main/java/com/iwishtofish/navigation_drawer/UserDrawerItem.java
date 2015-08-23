@@ -1,4 +1,4 @@
-package com.iwishtofish;
+package com.iwishtofish.navigation_drawer;
 
 /**
  * Created by Kursulla on 23/08/15.
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.iwishtofish.R;
 
 public class UserDrawerItem extends RelativeLayout {
     protected TextView  drawerUserName;
@@ -31,7 +33,7 @@ public class UserDrawerItem extends RelativeLayout {
     }
 
     protected void init() {
-        inflate(getContext(),R.layout.drawer_user_item,this);
+        inflate(getContext(), R.layout.drawer_user_item,this);
         drawerUserName = (TextView)findViewById(R.id.user_name);
         drawerUserIcon = (ImageView)findViewById(R.id.user_icon);
     }

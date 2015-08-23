@@ -1,14 +1,9 @@
 <resources>
     <string name="app_name">IWishToFish</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string name="toast__refreshed">Refreshed...</string>
-
-    <!-- Events-->
-    <string name="events_toast__loading_failed">Sorry, but loading of events failed. Please, try again later.</string>
-    <string name="event_toast__loading_failed">Sorry, but loading of event failed. Please, try again later.</string>
+    <!-- Left Navigation Drawer-->
     <string name="navigation_drawer_open">Navigation opened</string>
     <string name="navigation_drawer_close">Close drawer</string>
     <string name="left_drawer_events_around">Fishing events</string>
@@ -20,6 +15,11 @@
     <string name="left_drawer_content_description_menu_item_icon">Menu item icon</string>
     <string name="left_drawer_content_fishing_type_icon">Icon identifying fishing type</string>
 
+    <string name="toast__refreshed">Refreshed...</string>
+
+    <!-- Events-->
+    <string name="events_toast__loading_failed">Sorry, but loading of events failed. Please, try again later.</string>
+    <string name="event_toast__loading_failed">Sorry, but loading of event failed. Please, try again later.</string>
     <plurals name="event_max_persons">
         <item quantity="one">Max %d person</item>
         <item quantity="other">Max %d persons</item>
