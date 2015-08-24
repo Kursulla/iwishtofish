@@ -55,6 +55,7 @@ public class AboutActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //Empty because there is no ContextMenu on AboutActivity
         return true;
     }
 }
