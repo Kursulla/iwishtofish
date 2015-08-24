@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/drawer_item">
+
     <ImageView
         android:id="@+id/drawable_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:padding="10dp"
-        android:contentDescription="@string/left_drawer_content_description_menu_item_icon" />
+        android:contentDescription="@string/left_drawer_content_description_menu_item_icon"
+        android:padding="10dp" />
 
     <TextView
         android:id="@+id/drawable_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:padding="3dp"
         android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/drawable_icon"
+        android:padding="3dp"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/drawable_icon" />
+        android:textStyle="bold" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/primary_dark"/>
+        android:background="@color/primary_dark" />
 </RelativeLayout>

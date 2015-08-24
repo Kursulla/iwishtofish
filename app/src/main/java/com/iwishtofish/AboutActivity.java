@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
 import android.support.v7.graphics.Palette.Swatch;
+import android.view.Menu;
 import android.widget.TextView;
 
 import com.iwishtofish.utils.AppUtil;
@@ -14,25 +15,21 @@ import com.iwishtofish.utils.AppUtil;
  */
 public class AboutActivity extends BaseActivity {
 
+    private TextView version;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        TextView version = (TextView)findViewById(R.id.app_version);
-        version.setText("Application version: "+ AppUtil.appVersion(this)+" ("+AppUtil.appCode(this)+")");
-
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.about_image);
-        Palette palette = Palette.from(bitmap).generate();
-        Swatch vibrant = palette.getDarkVibrantSwatch();
-        if (vibrant != null) {
-            setStatusBarColor(vibrant.getRgb());
-        }
+        _getViewReferences();
+        _initViews();
+        _loadData();
     }
 
     @Override
     protected void _getViewReferences() {
-
+        version = (TextView) findViewById(R.id.app_version);
     }
 
     @Override
@@ -41,7 +38,36 @@ public class AboutActivity extends BaseActivity {
     }
 
     @Override
-    protected void _loadData() {
+    protected void _initViews() {
+        super._initViews();
 
+        if (AppUtil.isAfterLollipop()) {
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.about_image);
+            Palette palette = Palette.from(bitmap).generate();
+
+            Swatch vibrant = palette.getVibrantSwatch();
+            Swatch vibrantDark = palette.getDarkVibrantSwatch();
+
+            if (vibrant != null) {
+                toolbar.setBackgroundColor(vibrant.getRgb());
+            }
+            if (vibrantDark != null) {
+                setMajorColor(vibrantDark.getRgb());
+            }
+        }
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    protected void _loadData() {
+        version.setText("Application version: " + AppUtil.appVersion(this) + " (" + AppUtil.appCode(this) + ")");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
