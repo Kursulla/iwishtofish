@@ -25,7 +25,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ic_proposition_musicarenje"
+                android:src="@drawable/ic_technic_deeping"
                 android:transitionName="type_icon" />
 
             <TextView

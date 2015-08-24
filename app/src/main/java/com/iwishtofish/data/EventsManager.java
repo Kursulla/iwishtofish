@@ -60,15 +60,15 @@ public class EventsManager {
 
     public static int getTypeResource(String type) {
         if (Technics.FEEDER.equals(type)) {
-            return R.drawable.ic_proposition_varalica;
+            return R.drawable.ic_technic_feeder;
         } else if (Technics.FLOATING.equals(type)) {
-            return R.drawable.ic_proposition_plovak;
+            return R.drawable.ic_technic_floating;
         } else if (Technics.BOLOGNESE.equals(type)) {
-            return R.drawable.ic_proposition_saran;
+            return R.drawable.ic_technic_bolognese;
         } else if (Technics.DEEPING.equals(type)) {
-            return R.drawable.ic_proposition_musicarenje;
+            return R.drawable.ic_technic_deeping;
         }else{
-            return R.drawable.ic_launcher;
+            return R.mipmap.ic_launcher;
         }
     }
 }
