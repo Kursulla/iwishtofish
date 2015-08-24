@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.iwishtofish.api.models.Event;
 import com.iwishtofish.data.EventsManager;
 import com.iwishtofish.data.Technics;
-import com.iwishtofish.utils.AndroidVersionUtil;
+import com.iwishtofish.utils.AppUtil;
 import com.iwishtofish.utils.SnackBarControl;
 
 /**
@@ -68,7 +68,7 @@ public class EventActivity extends BaseActivity {
     @Override
     protected void _initViews() {
         super._initViews();
-        if (AndroidVersionUtil.isAfterLollipop()) {
+        if (AppUtil.isAfterLollipop()) {
             initMaterialColors();
         }
 
