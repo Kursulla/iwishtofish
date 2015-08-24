@@ -1,14 +1,11 @@
 package com.iwishtofish;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v7.graphics.Palette;
-import android.support.v7.graphics.Palette.Swatch;
 import android.view.Menu;
 import android.widget.TextView;
 
 import com.iwishtofish.utils.AppUtil;
+import com.iwishtofish.utils.PaletteUtil;
 
 /**
  * Created by Kursulla on 23/08/15.
@@ -42,18 +39,8 @@ public class AboutActivity extends BaseActivity {
         super._initViews();
 
         if (AppUtil.isAfterLollipop()) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.about_image);
-            Palette palette = Palette.from(bitmap).generate();
-
-            Swatch vibrant = palette.getVibrantSwatch();
-            Swatch vibrantDark = palette.getDarkVibrantSwatch();
-
-            if (vibrant != null) {
-                toolbar.setBackgroundColor(vibrant.getRgb());
-            }
-            if (vibrantDark != null) {
-                setMajorColor(vibrantDark.getRgb());
-            }
+            toolbar.setBackgroundColor(PaletteUtil.getVibrantColor(R.drawable.about_image, this));
+            setMajorColor(PaletteUtil.getDarkVibrantColor(R.drawable.about_image, this));
         }
 
         if (getSupportActionBar() != null) {
