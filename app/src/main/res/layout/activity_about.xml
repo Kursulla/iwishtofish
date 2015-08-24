@@ -29,8 +29,8 @@
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius aliquam cursus. Praesent imperdiet, ipsum vitae suscipit eleifend, risus sapien bibendum enim, id dictum libero odio a diam. Vivamus tempor placerat tempor. Proin volutpat ac metus id sagittis. Nam vel ante vehicula, rhoncus magna sagittis, fringilla diam. Nullam ac tempor urna. Maecenas in blandit dolor." />
 
     <TextView
+        android:id="@+id/app_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Application version: 1.0" />
+        android:padding="10dp" />
 </LinearLayout>
