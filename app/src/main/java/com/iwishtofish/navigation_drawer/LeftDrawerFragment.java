@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import com.iwishtofish.AboutActivity;
 import com.iwishtofish.EventsActivity;
 import com.iwishtofish.R;
 
@@ -80,7 +81,7 @@ public class LeftDrawerFragment extends Fragment {
         about.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), EventsActivity.class);
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
                 getActivity().startActivity(intent);
             }
         });

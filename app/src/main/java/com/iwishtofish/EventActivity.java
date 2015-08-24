@@ -1,11 +1,7 @@
 package com.iwishtofish;
 
-import android.annotation.TargetApi;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -96,30 +92,23 @@ public class EventActivity extends BaseActivity {
             switch (eventType) {
                 case Technics.FEEDER:
                     toolbar.setBackgroundColor(getResources().getColor(R.color.technic_feeder));
-                    setStatusBatColor(getResources().getColor(R.color.technic_feeder_dark));
+                    setStatusBarColor(getResources().getColor(R.color.technic_feeder_dark));
                     break;
                 case Technics.DEEPING:
                     toolbar.setBackgroundColor(getResources().getColor(R.color.technic_deeping));
-                    setStatusBatColor(getResources().getColor(R.color.technic_deeping_dark));
+                    setStatusBarColor(getResources().getColor(R.color.technic_deeping_dark));
                     break;
                 case Technics.BOLOGNESE:
                     toolbar.setBackgroundColor(getResources().getColor(R.color.technic_bolognese));
-                    setStatusBatColor(getResources().getColor(R.color.technic_bolognese_dark));
+                    setStatusBarColor(getResources().getColor(R.color.technic_bolognese_dark));
                     break;
                 case Technics.FLOATING:
                     toolbar.setBackgroundColor(getResources().getColor(R.color.technic_floating));
-                    setStatusBatColor(getResources().getColor(R.color.technic_floating_dark));
+                    setStatusBarColor(getResources().getColor(R.color.technic_floating_dark));
                     break;
             }
         }
     }
 
-    @TargetApi(VERSION_CODES.LOLLIPOP)
-    private void setStatusBatColor(int color) {
-        Window window = getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(color);
-        window.setNavigationBarColor(color);
-    }
+
 }

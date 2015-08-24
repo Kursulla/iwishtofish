@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+              android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/about_image" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:text="I Wish To Fish"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius aliquam cursus. Praesent imperdiet, ipsum vitae suscipit eleifend, risus sapien bibendum enim, id dictum libero odio a diam. Vivamus tempor placerat tempor. Proin volutpat ac metus id sagittis. Nam vel ante vehicula, rhoncus magna sagittis, fringilla diam. Nullam ac tempor urna. Maecenas in blandit dolor." />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Application version: 1.0" />
+</LinearLayout>

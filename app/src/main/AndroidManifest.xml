@@ -20,6 +20,11 @@
         <activity
             android:name=".EventActivity"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/about_title"
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>
