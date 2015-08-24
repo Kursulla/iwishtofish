@@ -8,6 +8,7 @@ import com.iwishtofish.api.models.Event;
 import com.iwishtofish.data.EventsManager;
 import com.iwishtofish.data.Technics;
 import com.iwishtofish.utils.AppUtil;
+import com.iwishtofish.utils.PaletteUtil;
 import com.iwishtofish.utils.SnackBarControl;
 
 /**
@@ -80,20 +81,20 @@ public class EventActivity extends BaseActivity {
         if (eventType != null) {
             switch (eventType) {
                 case Technics.FEEDER:
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.technic_feeder));
-                    setMajorColor(getResources().getColor(R.color.technic_feeder_dark));
+                    toolbar.setBackgroundColor(PaletteUtil.getVibrantColor(R.drawable.ic_technic_feeder, this));
+                    setMajorColor(PaletteUtil.getDarkVibrantColor(R.drawable.ic_technic_feeder, this));
                     break;
                 case Technics.DEEPING:
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.technic_deeping));
-                    setMajorColor(getResources().getColor(R.color.technic_deeping_dark));
+                    toolbar.setBackgroundColor(PaletteUtil.getVibrantColor(R.drawable.ic_technic_deeping, this));
+                    setMajorColor(PaletteUtil.getDarkVibrantColor(R.drawable.ic_technic_deeping, this));
                     break;
                 case Technics.BOLOGNESE:
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.technic_bolognese));
-                    setMajorColor(getResources().getColor(R.color.technic_bolognese_dark));
+                    toolbar.setBackgroundColor(PaletteUtil.getVibrantColor(R.drawable.ic_technic_bolognese, this));
+                    setMajorColor(PaletteUtil.getDarkVibrantColor(R.drawable.ic_technic_bolognese, this));
                     break;
                 case Technics.FLOATING:
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.technic_floating));
-                    setMajorColor(getResources().getColor(R.color.technic_floating_dark));
+                    toolbar.setBackgroundColor(PaletteUtil.getVibrantColor(R.drawable.ic_technic_floating, this));
+                    setMajorColor(PaletteUtil.getDarkVibrantColor(R.drawable.ic_technic_floating, this));
                     break;
             }
         }
