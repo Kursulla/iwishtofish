@@ -1,7 +1,6 @@
 package com.iwishtofish;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -77,34 +76,24 @@ public class EventActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void initMaterialColors() {
         if (eventType != null) {
             switch (eventType) {
                 case Technics.FEEDER:
                     toolbar.setBackgroundColor(getResources().getColor(R.color.technic_feeder));
-                    setStatusBarColor(getResources().getColor(R.color.technic_feeder_dark));
+                    setMajorColor(getResources().getColor(R.color.technic_feeder_dark));
                     break;
                 case Technics.DEEPING:
                     toolbar.setBackgroundColor(getResources().getColor(R.color.technic_deeping));
-                    setStatusBarColor(getResources().getColor(R.color.technic_deeping_dark));
+                    setMajorColor(getResources().getColor(R.color.technic_deeping_dark));
                     break;
                 case Technics.BOLOGNESE:
                     toolbar.setBackgroundColor(getResources().getColor(R.color.technic_bolognese));
-                    setStatusBarColor(getResources().getColor(R.color.technic_bolognese_dark));
+                    setMajorColor(getResources().getColor(R.color.technic_bolognese_dark));
                     break;
                 case Technics.FLOATING:
                     toolbar.setBackgroundColor(getResources().getColor(R.color.technic_floating));
-                    setStatusBarColor(getResources().getColor(R.color.technic_floating_dark));
+                    setMajorColor(getResources().getColor(R.color.technic_floating_dark));
                     break;
             }
         }

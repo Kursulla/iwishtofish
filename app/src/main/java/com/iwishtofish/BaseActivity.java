@@ -45,8 +45,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         return true;
     }
 
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId() == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
         if (item.getItemId() == R.id.action_settings) {
             return true;
         }
@@ -64,7 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @TargetApi(VERSION_CODES.LOLLIPOP)
-    protected void setStatusBarColor(int color) {
+    protected void setMajorColor(int color) {
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
