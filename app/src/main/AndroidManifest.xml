@@ -25,6 +25,11 @@
             android:label="@string/about_title"
             android:theme="@style/AppTheme"
             android:launchMode="singleTask"/>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings_title"
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>
