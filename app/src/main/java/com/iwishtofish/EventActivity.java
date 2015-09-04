@@ -19,37 +19,35 @@ public class EventActivity extends BaseActivity {
     public static final  String EVENT_INDEX = "EVENT_INDEX";
     public static final  String EVENT_TYPE  = "TYPE";
     //Deprecated because of use of DataBinding
-//    private ImageView type;
-//    private TextView  title;
-//    private TextView  date;
-//    private TextView  location;
-//    private TextView  description;
-    private int       eventIndex;
-    private String    eventType;
+    //    private ImageView type;
+    //    private TextView  title;
+    //    private TextView  date;
+    //    private TextView  location;
+    //    private TextView  description;
+    private int    eventIndex;
+    private String eventType;
     Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
-
-        _getViewReferences();
         _getBundledData();
-        _initViews();
         _loadData();
-
+        
         ActivityEventBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_event);
         binding.setEvent(event);
+
+        _initViews();
     }
 
     @Override
     protected void _getViewReferences() {
         //Deprecated because of use of DataBinding
-//        type = (ImageView) findViewById(R.id.type_icon_iv);
-//        title = (TextView) findViewById(R.id.title_tv);
-//        date = (TextView) findViewById(R.id.date_tv);
-//        location = (TextView) findViewById(R.id.location_tv);
-//        description = (TextView) findViewById(R.id.description_tv);
+        //        type = (ImageView) findViewById(R.id.type_icon_iv);
+        //        title = (TextView) findViewById(R.id.title_tv);
+        //        date = (TextView) findViewById(R.id.date_tv);
+        //        location = (TextView) findViewById(R.id.location_tv);
+        //        description = (TextView) findViewById(R.id.description_tv);
     }
 
     @Override
@@ -101,6 +99,5 @@ public class EventActivity extends BaseActivity {
             }
         }
     }
-
 
 }

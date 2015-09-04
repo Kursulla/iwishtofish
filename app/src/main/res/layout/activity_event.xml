@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".MainActivity">
-
+<layout>
     <data>
-
         <import type="com.iwishtofish.data.EventsManager" />
-        <variable
-            name="event"
-            type="com.iwishtofish.api.models.Event" />
-
+        <variable name="event" type="com.iwishtofish.api.models.Event" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,8 +37,8 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:contentDescription="@string/left_drawer_content_fishing_type_icon"
-                    app:applyTypeImage="@{event.type}"
-                    android:transitionName="type_icon" />
+                    android:transitionName="type_icon"
+                    app:applyTypeImage="@{event.type}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
