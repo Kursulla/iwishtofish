@@ -1,87 +1,105 @@
-<android.support.design.widget.CoordinatorLayout
-    android:id="@+id/coordinator_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".MainActivity">
 
-    <LinearLayout
+    <data>
+
+        <import type="com.iwishtofish.data.EventsManager" />
+        <variable
+            name="event"
+            type="com.iwishtofish.api.models.Event" />
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:minHeight="?attr/actionBarSize"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/ToolBarStyle" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <ImageView
-                android:id="@+id/type_icon_iv"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:transitionName="type_icon"
-                android:contentDescription="@string/left_drawer_content_fishing_type_icon"
-                android:src="@drawable/ic_launcher" />
-
-            <LinearLayout
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/ToolBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/type_icon_iv"
-                android:orientation="vertical">
+                android:minHeight="?attr/actionBarSize" />
 
-                <TextView
-                    android:id="@+id/title_tv"
-                    android:transitionName="title"
-                    style="@style/event_details_title"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
-                <TextView
-                    android:id="@+id/date_tv"
-                    style="@style/event_details_date"
-                    android:transitionName="date"/>
+                <ImageView
+                    android:id="@+id/type_icon_iv"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/left_drawer_content_fishing_type_icon"
+                    app:applyTypeImage="@{event.type}"
+                    android:transitionName="type_icon" />
 
-                <TextView
-                    android:id="@+id/location_tv"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:transitionName="location"/>
-            </LinearLayout>
-        </RelativeLayout>
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/type_icon_iv"
+                    android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/event_details_label"
-            android:text="Description:"/>
-        <TextView
-            android:id="@+id/description_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin aliquam purus nec porta. Maecenas at pulvinar eros. Morbi a tincidunt turpis, et imperdiet justo. Proin id magna volutpat, vulputate nibh et, fermentum purus. Quisque in aliquet ante. In hac habitasse platea dictumst. In hac habitasse platea dictumst. Sed bibendum erat eget magna eleifend, quis interdum lectus consectetur. Pellentesque ultricies ornare dui, sit amet fringilla elit ultricies non. Morbi eros leo, euismod vel venenatis eu, lacinia in nisi. " />
+                    <TextView
+                        android:id="@+id/title_tv"
+                        style="@style/event_details_title"
+                        android:text="@{event.title}"
+                        android:transitionName="title" />
 
-        <View style="@style/event_details_separator_line"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/event_details_label"
-            android:text="Comments:" />
+                    <TextView
+                        android:id="@+id/date_tv"
+                        style="@style/event_details_date"
+                        android:text="@{event.when}"
+                        android:transitionName="date" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+                    <TextView
+                        android:id="@+id/location_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/event_location_comma(event.location,event.subLocation)}"
+                        android:transitionName="location" />
+                </LinearLayout>
+            </RelativeLayout>
 
-    </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+            <TextView
+                style="@style/event_details_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description:" />
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{event.description}"
+                android:textSize="14sp" />
+
+            <View style="@style/event_details_separator_line" />
+
+            <TextView
+                style="@style/event_details_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comments:" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

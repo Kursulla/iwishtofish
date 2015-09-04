@@ -1,5 +1,8 @@
 package com.iwishtofish.data;
 
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
+
 import com.iwishtofish.R;
 import com.iwishtofish.api.APIClients.APIEventsClient;
 import com.iwishtofish.api.api_interfaces.ServerResponseCallback;
@@ -70,5 +73,10 @@ public class EventsManager {
         }else{
             return R.mipmap.ic_launcher;
         }
+    }
+
+    @BindingAdapter({"bind:applyTypeImage"})
+    public static void typeIconBinder(ImageView imageView, String type) {
+        imageView.setImageResource(getTypeResource(type));
     }
 }

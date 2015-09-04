@@ -22,6 +22,7 @@
     <!-- Event/Events-->
     <string name="events_toast__loading_failed">Sorry, but loading of events failed. Please, try again later.</string>
     <string name="event_toast__loading_failed">Sorry, but loading of event failed. Please, try again later.</string>
+    <string name="event_location_comma"> %1$s, %2$s</string>
     <plurals name="event_max_persons">
         <item quantity="one">Max %d person</item>
         <item quantity="other">Max %d persons</item>
