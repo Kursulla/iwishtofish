@@ -5,4 +5,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.infstory:retrofit:2.0.0'
     compile 'junit:junit:4.12'
+    compile 'io.reactivex:rxandroid:0.24.0'
 }

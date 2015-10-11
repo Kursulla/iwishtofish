@@ -114,4 +114,28 @@ public class APIEventsClient {
         });
     }
 
+    public Observable<Event> getEventDetailsR(@Path("eventId") long eventId) {
+        return api.getEventDetailsR(eventId)
+                  .subscribeOn(Schedulers.newThread())
+                  .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public void eventDetailsR(@Path("eventId") long eventId, final ServerResponseCallback callback) {
+        api.getEventDetailsR(eventId).subscribe(new Observer<Event>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Event event) {
+
+            }
+        });
+    }
 }

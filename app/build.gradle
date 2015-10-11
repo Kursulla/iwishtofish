@@ -29,6 +29,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.0.0'
     compile 'com.android.support:recyclerview-v7:23.0.0'
     compile 'com.infstory:retrofit:2.0.0'
+    compile 'io.reactivex:rxandroid:0.24.0'
 
     androidTestCompile ('com.android.support.test:runner:0.3') {
         exclude module: 'support-annotations'

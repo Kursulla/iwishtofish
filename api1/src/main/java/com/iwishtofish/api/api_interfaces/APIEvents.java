@@ -10,6 +10,7 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.Query;
+import rx.Observable;
 
 /**
  *
@@ -31,4 +32,7 @@ public interface APIEvents {
 //    @DELETE("/events/{event_id}")
     @DELETE("/55d2477f5733d7461621e979/{event_id}")
     void deleteEvent(@Path("event_id")long eventId, Callback<Void> callback);
+
+    @GET("/55d6f490c97bffe803a685d4/{eventId}")
+    Observable<Event> getEventDetailsR(@Path("eventId") long eventId);
 }
