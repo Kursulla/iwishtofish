@@ -19,7 +19,7 @@ public class EventsManager {
     private static Events events;
 
     public static void init() {
-        APIEventsClient.init();
+        APIEventsClient.init(APIEventsClient.DEFAULT_CLIENT);
     }
 
     public static Events getEvents() {

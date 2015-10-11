@@ -19,7 +19,7 @@ public class EventsApiTest extends TestCase {
 
     public void setUp() throws Exception {
         super.setUp();
-        APIEventsClient.init();
+        APIEventsClient.init(new ApiEventsMock());
     }
 
     public void testGetAllEvents() throws Exception {

@@ -33,7 +33,7 @@ public class EventActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         _getBundledData();
         _loadData();
-        
+
         ActivityEventBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_event);
         binding.setEvent(event);
 

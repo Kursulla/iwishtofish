@@ -12,36 +12,46 @@ import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RestAdapter.LogLevel;
 import retrofit.RetrofitError;
+import retrofit.client.Client;
 import retrofit.client.Response;
 import retrofit.http.Body;
 import retrofit.http.Path;
+import rx.Observable;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Kursulla on 16/08/15.
  */
 public class APIEventsClient {
+    public static final Client DEFAULT_CLIENT = null;
     private static APIEventsClient singleton;
-    private static APIEvents api;
+    private static APIEvents       api;
 
     private APIEventsClient() {
     }
 
     /* We could benefit from separation init() from get later. */
-    public static void init() {
+    public static void init(Client client) {
         singleton = new APIEventsClient();
-        RestAdapter restAdapter = new RestAdapter.Builder()
+        RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setEndpoint(URLConstants.DEV_API_URL)
-                .setLogLevel(LogLevel.NONE)
-//                .setClient(new ApiEventsMock())//Use only for API tests
-                .build();
+                .setLogLevel(LogLevel.NONE);
+        if(client != null){
+            builder.setClient(client);
+        }
+
+        RestAdapter restAdapter = builder.build();
         api = restAdapter.create(APIEvents.class);
     }
 
     public static APIEventsClient get() {
-        if (singleton == null)
+        if (singleton == null) {
             throw new ApiNotInstantiatedException("You forgot to instantiate EventsAPI");
-        else
+        } else {
             return singleton;
+        }
     }
 
     public void eventsInRegion(@Path("lat") String lat, @Path("lng") String lng, final ServerResponseCallback callback) {
@@ -54,7 +64,7 @@ public class APIEventsClient {
 
             @Override
             public void failure(RetrofitError error) {
-                callback.onError(new APIError(error.getResponse().getStatus(),error.getResponse().getReason()));
+                callback.onError(new APIError(error.getResponse().getStatus(), error.getResponse().getReason()));
             }
         });
     }
@@ -89,10 +99,9 @@ public class APIEventsClient {
         });
     }
 
-
     public void deleteEvent(@Path("event_id") long eventId, final ServerResponseCallback callback) {
         /* Just forward callback, because no need for any data repacking. */
-        api.deleteEvent(eventId, new Callback<Void>(){
+        api.deleteEvent(eventId, new Callback<Void>() {
             @Override
             public void success(Void aVoid, Response response) {
                 callback.onSuccess(null, new APIResponseStatus(response.getStatus()));
@@ -104,4 +113,5 @@ public class APIEventsClient {
             }
         });
     }
+
 }

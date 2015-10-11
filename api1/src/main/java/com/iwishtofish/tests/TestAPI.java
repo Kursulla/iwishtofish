@@ -11,7 +11,7 @@ import com.iwishtofish.api.models.APIResponseStatus;
  */
 public class TestAPI {
     public static void main(String[] args){
-        APIEventsClient.init();
+        APIEventsClient.init(new ApiEventsMock());
         APIEventsClient.get().deleteEvent(123, new ServerResponseCallback<Object>() {
             @Override
             public void onSuccess(Object o, APIResponseStatus responseStatus) {

@@ -7,13 +7,23 @@ import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.EditText;
 
+import com.iwishtofish.api.APIClients.APIEventsClient;
 import com.iwishtofish.api.models.APIError;
+import com.iwishtofish.api.models.Event;
 import com.iwishtofish.api.models.Events;
 import com.iwishtofish.data.ApiCallback;
 import com.iwishtofish.data.EventsManager;
 import com.iwishtofish.navigation_drawer.LeftDrawerFragment;
 import com.iwishtofish.utils.SnackBarControl;
+
+import java.util.concurrent.TimeUnit;
+
+import rx.Observer;
+import rx.Subscription;
+import rx.android.widget.OnTextChangeEvent;
+import rx.android.widget.WidgetObservable;
 
 /**
  * Represents list of all events in set region.
@@ -25,6 +35,7 @@ public class EventsActivity extends BaseActivity {
     public static final  int    GRID_COLUMN_COUNT = 3;
     private RecyclerView       recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private EditText           locationName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +47,32 @@ public class EventsActivity extends BaseActivity {
         _initViews();
 
         _loadData();
+
+        System.out.println("Start");
+        Subscription subscription = APIEventsClient.get().getEventDetailsR(111).subscribe(new Observer<Event>() {
+            @Override
+            public void onCompleted() {
+                System.out.println("onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                System.out.println("onError ");
+                e.printStackTrace();
+
+            }
+
+            @Override
+            public void onNext(Event event) {
+                System.out.println("onNext");
+
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override
@@ -48,6 +85,7 @@ public class EventsActivity extends BaseActivity {
                 _loadData();
             }
         });
+        locationName = (EditText) findViewById(R.id.location_name);
     }
 
     @Override
@@ -93,6 +131,27 @@ public class EventsActivity extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        WidgetObservable
+                .text(locationName, false)
+                .debounce(400, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<OnTextChangeEvent>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(OnTextChangeEvent onTextChangeEvent) {
+                        System.out.println("Change: " + onTextChangeEvent.text().toString());
+                    }
+                });
+
     }
 
     @Override
